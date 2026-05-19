@@ -513,161 +513,7 @@
     }
 
     /* ============================================================
-       7. FEATURES GRID — Bento 3-col
-       ============================================================ */
-    .features {
-      padding: 120px 0;
-      background: var(--off-white);
-      position: relative;
-    }
-
-    .features-header {
-      text-align: center;
-      max-width: 720px;
-      margin: 0 auto 80px;
-    }
-    .features-header .util { display: inline-block; margin-bottom: 20px; }
-    .features-header h2 {
-      font-family: 'Instrument Serif', serif;
-      font-weight: 400;
-      font-size: clamp(40px, 6vw, 80px);
-      line-height: 1;
-      letter-spacing: -0.02em;
-      color: var(--ink);
-    }
-    .features-header h2 .italic { font-style: italic; color: var(--coral); }
-    .features-header p {
-      margin-top: 24px;
-      font-size: 17px;
-      color: var(--text-soft);
-      line-height: 1.55;
-    }
-
-    .features-grid {
-      display: grid;
-      grid-template-columns: 1fr;
-      gap: 24px;
-    }
-    @media (min-width: 768px) {
-      .features-grid {
-        grid-template-columns: repeat(3, 1fr);
-        grid-auto-rows: minmax(300px, auto);
-      }
-    }
-
-    .feature-card {
-      border-radius: 48px;
-      padding: 48px;
-      position: relative;
-      overflow: hidden;
-      transition: transform 0.5s var(--ease), box-shadow 0.5s var(--ease);
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      text-decoration: none;
-    }
-    .feature-card:hover {
-      transform: translateY(-6px);
-      box-shadow: 0 30px 60px rgba(24, 172, 154, 0.1);
-    }
-    @media (min-width: 768px) {
-      .feature-card-large { grid-column: span 2; }
-    }
-
-    .feature-card-light {
-      background: var(--white);
-      border: 1px solid var(--ink-ghost);
-      color: var(--ink);
-    }
-    .feature-card-dark {
-      background: var(--ink);
-      color: var(--white);
-    }
-    .feature-card-coral {
-      background: var(--peach);
-      color: var(--ink);
-    }
-
-    .feature-icon {
-      width: 72px;
-      height: 72px;
-      border-radius: 20px;
-      background: var(--peach);
-      color: var(--coral);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      margin-bottom: 32px;
-      transition: all 0.4s var(--ease);
-    }
-    .feature-card-dark .feature-icon {
-      background: rgba(237, 112, 10, 0.18);
-      color: var(--coral);
-    }
-    .feature-card-coral .feature-icon {
-      background: var(--coral);
-      color: var(--white);
-    }
-    .feature-card:hover .feature-icon {
-      transform: rotate(-6deg) scale(1.05);
-    }
-
-    .feature-card .price {
-      font-family: 'Instrument Serif', serif;
-      font-style: italic;
-      font-weight: 400;
-      font-size: clamp(36px, 4vw, 56px);
-      line-height: 1;
-      color: var(--coral);
-      margin-bottom: 12px;
-    }
-    .feature-card-dark .price { color: var(--coral); }
-
-    .feature-card h3 {
-      font-family: 'Manrope', sans-serif;
-      font-size: clamp(22px, 2.4vw, 28px);
-      font-weight: 700;
-      line-height: 1.15;
-      letter-spacing: -0.015em;
-      margin-bottom: 12px;
-    }
-    .feature-card p {
-      font-size: 15px;
-      line-height: 1.55;
-      opacity: 0.85;
-      margin-bottom: 32px;
-      flex-grow: 1;
-    }
-    .feature-card-dark p { opacity: 0.7; }
-
-    .feature-link {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      font-size: 12px;
-      font-weight: 800;
-      letter-spacing: 0.15em;
-      text-transform: uppercase;
-      transition: gap 0.4s var(--ease);
-      color: var(--coral);
-    }
-    .feature-card-dark .feature-link { color: var(--coral); }
-    .feature-card:hover .feature-link { gap: 14px; }
-
-    /* Decorative bg icon on featured card */
-    .feature-bg-icon {
-      position: absolute;
-      bottom: -40px;
-      right: -40px;
-      width: 280px;
-      height: 280px;
-      opacity: 0.06;
-      color: var(--ink);
-      pointer-events: none;
-    }
-
-    /* ============================================================
-       8. NUMBERS — Authority stats
+       7. NUMBERS — Authority stats
        ============================================================ */
     .numbers {
       padding: 140px 0;
@@ -817,7 +663,12 @@
     }
     @media (min-width: 768px) {
       .exp-grid {
-        grid-template-columns: repeat(12, 1fr);
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+    @media (min-width: 1100px) {
+      .exp-grid {
+        grid-template-columns: repeat(3, 1fr);
       }
     }
 
@@ -829,75 +680,51 @@
       overflow: hidden;
       display: flex;
       flex-direction: column;
+      min-height: 420px;
+      color: var(--white);
     }
     .exp-card:hover {
       transform: translateY(-6px);
-      box-shadow: 0 30px 60px rgba(24, 172, 154, 0.1);
-    }
-    @media (min-width: 768px) {
-      .exp-1 { grid-column: span 7; min-height: 380px; }
-      .exp-2 { grid-column: span 5; min-height: 380px; }
-      .exp-3 { grid-column: span 5; min-height: 320px; }
-      .exp-4 { grid-column: span 4; min-height: 320px; }
-      .exp-5 { grid-column: span 3; min-height: 320px; }
+      box-shadow: 0 30px 60px rgba(24, 172, 154, 0.15);
     }
 
-    .exp-1 {
+    /* Card laranja (coral) */
+    .exp-coral {
       background: var(--coral);
       color: var(--white);
     }
-    .exp-2 {
+    .exp-coral:hover {
+      box-shadow: 0 30px 60px rgba(237, 112, 10, 0.3);
+    }
+
+    /* Card teal (brand) */
+    .exp-teal {
       background: var(--ink);
       color: var(--white);
     }
-    .exp-3 {
-      background: var(--peach);
-      color: var(--ink);
+    .exp-teal::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, rgba(0, 0, 0, 0.08) 0%, rgba(0, 0, 0, 0) 60%);
+      pointer-events: none;
     }
-    .exp-4 {
-      background: var(--white);
-      border: 1px solid var(--ink-ghost);
-      color: var(--ink);
-    }
-    .exp-5 {
-      background: var(--white);
-      border: 1px solid var(--ink-ghost);
-      color: var(--ink);
+    .exp-teal:hover {
+      box-shadow: 0 30px 60px rgba(24, 172, 154, 0.3);
     }
 
     .exp-num {
       font-family: 'Instrument Serif', serif;
       font-style: italic;
       font-weight: 400;
-      font-size: 24px;
+      font-size: 28px;
       line-height: 1;
-      opacity: 0.7;
-      margin-bottom: 24px;
+      margin-bottom: 28px;
+      position: relative;
+      z-index: 1;
     }
-    .exp-1 .exp-num { color: rgba(255, 255, 255, 0.8); }
-    .exp-2 .exp-num { color: var(--coral); opacity: 1; }
-    .exp-3 .exp-num,
-    .exp-4 .exp-num,
-    .exp-5 .exp-num { color: var(--coral); opacity: 1; }
-
-    .exp-card h3 {
-      font-family: 'Instrument Serif', serif;
-      font-weight: 400;
-      font-size: clamp(28px, 3.6vw, 44px);
-      line-height: 1;
-      letter-spacing: -0.02em;
-      margin-bottom: 16px;
-      margin-top: auto;
-    }
-    .exp-card h3 .italic { font-style: italic; color: var(--coral); }
-    .exp-1 h3 .italic, .exp-2 h3 .italic { color: var(--white); }
-
-    .exp-card p {
-      font-size: 15px;
-      line-height: 1.55;
-      opacity: 0.85;
-    }
-    .exp-2 p, .exp-1 p { opacity: 0.7; }
+    .exp-coral .exp-num { color: rgba(255, 255, 255, 0.85); }
+    .exp-teal .exp-num { color: var(--coral); }
 
     .exp-icon {
       width: 56px;
@@ -908,10 +735,39 @@
       align-items: center;
       justify-content: center;
       color: var(--white);
-      margin-bottom: 20px;
+      margin-bottom: 24px;
+      transition: transform 0.4s var(--ease);
+      position: relative;
+      z-index: 1;
     }
-    .exp-3 .exp-icon { background: rgba(237, 112, 10, 0.15); color: var(--coral); }
-    .exp-4 .exp-icon, .exp-5 .exp-icon { background: var(--peach); color: var(--coral); }
+    .exp-card:hover .exp-icon {
+      transform: rotate(-6deg) scale(1.05);
+    }
+    .exp-teal .exp-icon { background: rgba(237, 112, 10, 0.22); color: var(--coral); }
+
+    .exp-card h3 {
+      font-family: 'Instrument Serif', serif;
+      font-weight: 400;
+      font-size: clamp(28px, 3.2vw, 40px);
+      line-height: 1;
+      letter-spacing: -0.02em;
+      margin-bottom: 20px;
+      margin-top: auto;
+      color: var(--white);
+      position: relative;
+      z-index: 1;
+      text-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+    }
+    .exp-coral h3 .italic { color: var(--white); font-style: italic; opacity: 0.95; }
+    .exp-teal h3 .italic { color: var(--coral); font-style: italic; }
+
+    .exp-card p {
+      font-size: 15px;
+      line-height: 1.6;
+      color: rgba(255, 255, 255, 0.88);
+      position: relative;
+      z-index: 1;
+    }
 
     /* ============================================================
        10. PROCESS — 4 steps editorial
@@ -1459,7 +1315,6 @@
       </a>
       <ul class="nav-menu">
         <li><a href="#manifesto">Manifesto</a></li>
-        <li><a href="#features">Ofertas</a></li>
         <li><a href="#experience">Experiência</a></li>
         <li><a href="#locations">Unidades</a></li>
       </ul>
@@ -1488,12 +1343,8 @@
         </p>
 
         <div class="hero-ctas reveal in">
-          <a href="#locations" class="btn btn-primary">
-            Visitar a loja mais próxima
-            <span>→</span>
-          </a>
           <a href="https://wa.me/5519995803876?text=Ol%C3%A1!%20Vim%20pelo%20site%20da%20Idealize"
-             class="btn btn-ghost" target="_blank" rel="noopener">
+             class="btn btn-primary" target="_blank" rel="noopener">
             Falar no WhatsApp
             <span>→</span>
           </a>
@@ -1572,104 +1423,6 @@
   </section>
 
   <!-- ============================================================
-       3. FEATURES — 3-col bento with offers
-       ============================================================ -->
-  <section class="features" id="features">
-    <div class="wrap">
-      <div class="features-header reveal">
-        <span class="util">— A oferta Idealize</span>
-        <h2>Quatro motivos pra<br><span class="italic">vir hoje.</span></h2>
-        <p>Preço justo, qualidade real, agilidade de laboratório e garantia honesta. É o que define a Idealize em cada uma das quatro unidades.</p>
-      </div>
-
-      <div class="features-grid">
-        <!-- Card 1 - Large light (R$ 99,90) -->
-        <a href="https://wa.me/5519995803876?text=Quero%20o%20%C3%B3culos%20completo%20de%20R%24%2099%2C90"
-           class="feature-card feature-card-light feature-card-large reveal" target="_blank" rel="noopener">
-          <div>
-            <div class="feature-icon">
-              <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <circle cx="6" cy="15" r="4"/><circle cx="18" cy="15" r="4"/><path d="M10 15h4"/>
-              </svg>
-            </div>
-            <div class="price">R$ 99<span style="font-style:normal;color:var(--ink-soft);font-size:0.6em;">,90</span></div>
-            <h3>Óculos completo:<br>armação + lentes inclusas.</h3>
-            <p>O preço que aparece é o preço que você paga. Lentes de visão simples, armações selecionadas, tudo no mesmo pacote. Sem upsell.</p>
-          </div>
-          <span class="feature-link">Quero esta oferta →</span>
-          <svg class="feature-bg-icon" viewBox="0 0 24 24" fill="currentColor">
-            <circle cx="6" cy="15" r="4"/><circle cx="18" cy="15" r="4"/><path d="M10 15h4" stroke="currentColor" stroke-width="2"/>
-          </svg>
-        </a>
-
-        <!-- Card 2 - Dark ink (60 min) -->
-        <a href="https://wa.me/5519995803876?text=Quero%20saber%20do%20%C3%B3culos%20pronto%20em%2060%20minutos"
-           class="feature-card feature-card-dark reveal" target="_blank" rel="noopener">
-          <div>
-            <div class="feature-icon">
-              <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
-                <circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/>
-              </svg>
-            </div>
-            <div class="price">60min</div>
-            <h3>Express:<br>no mesmo dia.</h3>
-            <p>Laboratório próprio em cada loja. Você vem, escolhe, espera 1 hora e sai já enxergando melhor.</p>
-          </div>
-          <span class="feature-link">Como funciona →</span>
-        </a>
-
-        <!-- Card 3 - Light (R$ 49,90 armações) -->
-        <a href="https://wa.me/5519995803876?text=Quero%20ver%20as%20arma%C3%A7%C3%B5es%20de%20R%24%2049%2C90"
-           class="feature-card feature-card-light reveal" target="_blank" rel="noopener">
-          <div>
-            <div class="feature-icon">
-              <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"/>
-                <line x1="7" y1="7" x2="7.01" y2="7"/>
-              </svg>
-            </div>
-            <div class="price">R$ 49<span style="font-style:normal;color:var(--ink-soft);font-size:0.6em;">,90</span></div>
-            <h3>Armações com<br>curadoria e estilo.</h3>
-            <p>Modelos selecionados. Plástico ou metal, fino ou marcante. Todas com garantia de 1 ano.</p>
-          </div>
-          <span class="feature-link">Ver coleção →</span>
-        </a>
-
-        <!-- Card 4 - Coral (Garantia) -->
-        <a href="https://wa.me/5519995803876?text=Quero%20saber%20sobre%20a%20garantia"
-           class="feature-card feature-card-coral reveal" target="_blank" rel="noopener">
-          <div>
-            <div class="feature-icon">
-              <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
-              </svg>
-            </div>
-            <div class="price">12 meses</div>
-            <h3>Garantia integral.</h3>
-            <p>Todas as armações cobertas contra defeitos de fábrica por 1 ano completo.</p>
-          </div>
-          <span class="feature-link">Saber mais →</span>
-        </a>
-
-        <!-- Card 5 - Dark (Experiência) -->
-        <a href="#experience" class="feature-card feature-card-dark feature-card-large reveal">
-          <div>
-            <div class="feature-icon">
-              <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
-              </svg>
-            </div>
-            <div class="price">Cortesia</div>
-            <h3>Estacionamento, cappuccino<br>e cadeira de massagem.</h3>
-            <p>Três detalhes que mudam tudo. Você não veio só comprar óculos — você veio passar uma manhã agradável.</p>
-          </div>
-          <span class="feature-link">Conhecer a experiência →</span>
-        </a>
-      </div>
-    </div>
-  </section>
-
-  <!-- ============================================================
        4. NUMBERS — Authority dark
        ============================================================ -->
   <section class="numbers">
@@ -1691,9 +1444,9 @@
             <div class="desc">anos no mercado óptico</div>
           </div>
           <div class="number-card reveal">
-            <div class="label">Express</div>
-            <div class="value">60<span class="italic">min</span></div>
-            <div class="desc">tempo médio de montagem</div>
+            <div class="label">Franquias</div>
+            <div class="value">02</div>
+            <div class="desc">franquias ativas em operação</div>
           </div>
           <div class="number-card reveal">
             <div class="label">Avaliação</div>
@@ -1719,14 +1472,14 @@
     <div class="wrap">
       <div class="experience-header reveal">
         <span class="util">— Experiência Idealize</span>
-        <h2>Três coisas que você<br><span class="italic">não esperava</span> de uma ótica.</h2>
-        <p>Quando você decide oferecer mais por menos, cada detalhe importa. Estes são os três que mudam toda a visita.</p>
+        <h2>Cinco detalhes que<br><span class="italic">mudam tudo</span> em uma ótica.</h2>
+        <p>Quando você decide oferecer mais por menos, cada detalhe importa. Estes são os cinco que tornam toda a visita diferente.</p>
       </div>
 
       <div class="exp-grid">
 
-        <!-- Pillar 01: Estacionamento (large coral) -->
-        <article class="exp-card exp-1 reveal">
+        <!-- 01 Estacionamento (laranja) -->
+        <article class="exp-card exp-coral reveal">
           <div class="exp-num">01</div>
           <div class="exp-icon">
             <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -1735,11 +1488,11 @@
             </svg>
           </div>
           <h3>Chegou,<br>estacionou.<br><span class="italic">Sem volta no quarteirão.</span></h3>
-          <p>Vaga grátis na chegada. Não precisa rodar atrás de espaço, pagar zona azul, sair correndo pra alimentar o parquímetro.</p>
+          <p>Vaga grátis na chegada. Não precisa rodar atrás de espaço, pagar zona azul ou sair correndo pra alimentar o parquímetro. A visita começa do jeito que tem que começar: sem stress.</p>
         </article>
 
-        <!-- Pillar 02: Cappuccino (dark ink) -->
-        <article class="exp-card exp-2 reveal">
+        <!-- 02 Cappuccino (teal) -->
+        <article class="exp-card exp-teal reveal">
           <div class="exp-num">02</div>
           <div class="exp-icon">
             <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -1749,11 +1502,11 @@
             </svg>
           </div>
           <h3>Cappuccino<br>na chegada.<br><span class="italic">Cortesia da casa.</span></h3>
-          <p>Detalhe pequeno que muda o jeito como você se sente entrando na loja. Café quentinho, água gelada, à vontade.</p>
+          <p>Detalhe pequeno que muda completamente o jeito como você se sente entrando na loja. Café quentinho, água gelada, ambiente acolhedor. Fique à vontade — você está em casa.</p>
         </article>
 
-        <!-- Pillar 03: Massagem (peach) -->
-        <article class="exp-card exp-3 reveal">
+        <!-- 03 Cadeira de massagem (laranja) -->
+        <article class="exp-card exp-coral reveal">
           <div class="exp-num">03</div>
           <div class="exp-icon">
             <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -1762,31 +1515,31 @@
             </svg>
           </div>
           <h3>Cadeira de<br>massagem<br><span class="italic">enquanto monta.</span></h3>
-          <p>Os 60 minutos de espera viram pausa do dia. Quando o óculos fica pronto, você sai mais relaxado do que entrou.</p>
+          <p>Os 60 minutos de espera viram pausa do dia. Quando seu óculos fica pronto, você sai da loja mais relaxado do que entrou. Cortesia, sem fila, sem stress, sem pressa.</p>
         </article>
 
-        <!-- Ambiente (white) -->
-        <article class="exp-card exp-4 reveal">
+        <!-- 04 Ambiente climatizado (teal) -->
+        <article class="exp-card exp-teal reveal">
           <div class="exp-num">04</div>
           <div class="exp-icon">
             <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
               <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>
             </svg>
           </div>
-          <h3>Ambiente<br>climatizado.</h3>
-          <p>Lojas iluminadas, organizadas e ar-condicionado. Você decide com calma.</p>
+          <h3>Ambiente premium,<br><span class="italic">clima certo.</span></h3>
+          <p>Lojas iluminadas, organizadas e com ar-condicionado. Curadoria de armações em exposição e espaço pra você experimentar sem multidão. Decida com a calma que merece.</p>
         </article>
 
-        <!-- Atendimento (white) -->
-        <article class="exp-card exp-5 reveal">
+        <!-- 05 Atendimento consultivo (laranja) -->
+        <article class="exp-card exp-coral reveal">
           <div class="exp-num">05</div>
           <div class="exp-icon">
             <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
               <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/>
             </svg>
           </div>
-          <h3>Atendimento<br>consultivo.</h3>
-          <p>Equipe orienta no seu ritmo. Sem pressão de venda.</p>
+          <h3>Atendimento<br><span class="italic">consultivo.</span></h3>
+          <p>Equipe treinada em visagismo para entender seu rosto, estilo e necessidade. Orienta sem pressionar — você decide no seu tempo, com toda informação na mão. Aqui ninguém vende empurrado.</p>
         </article>
 
       </div>
@@ -2028,7 +1781,7 @@
             <span>5 anos de tradição</span>
             <span>4 unidades em SP</span>
             <span>5 estrelas no Google</span>
-            <span>Pronto em 60 min</span>
+            <span>2 franquias ativas</span>
           </div>
         </div>
       </div>
@@ -2067,12 +1820,12 @@
         </div>
 
         <div>
-          <h4>Ofertas</h4>
+          <h4>Navegação</h4>
           <ul>
-            <li><a href="#features">Óculos R$ 99,90</a></li>
-            <li><a href="#features">Armações R$ 49,90</a></li>
-            <li><a href="#features">Express 60min</a></li>
-            <li><a href="#features">Garantia 1 ano</a></li>
+            <li><a href="#manifesto">Manifesto</a></li>
+            <li><a href="#experience">Experiência</a></li>
+            <li><a href="#locations">Unidades</a></li>
+            <li><a href="https://wa.me/5519995803876" target="_blank" rel="noopener">WhatsApp</a></li>
           </ul>
         </div>
 
