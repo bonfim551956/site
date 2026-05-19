@@ -129,7 +129,7 @@
 
     section { position: relative; }
 
-    /* Ambient background blurs (Red Sun signature) */
+    /* Ambient background blurs — agora como gradientes radiais (zero custo de GPU) */
     .blur-orb {
       position: absolute;
       border-radius: 50%;
@@ -137,37 +137,26 @@
       z-index: 0;
     }
     .blur-orb-coral {
-      background: var(--coral);
-      opacity: 0.1;
-      filter: blur(100px);
+      background: radial-gradient(circle, rgba(237, 112, 10, 0.18) 0%, rgba(237, 112, 10, 0) 65%);
     }
     .blur-orb-teal {
-      background: var(--teal);
-      opacity: 0.1;
-      filter: blur(100px);
+      background: radial-gradient(circle, rgba(24, 172, 154, 0.18) 0%, rgba(24, 172, 154, 0) 65%);
     }
     .blur-orb-peach {
-      background: var(--peach);
-      filter: blur(80px);
+      background: radial-gradient(circle, var(--peach) 0%, rgba(255, 243, 230, 0) 65%);
     }
 
     /* ============================================================
-       3. REVEAL ANIMATIONS (fade-up + 2deg rotation per spec)
+       3. REVEAL ANIMATIONS — DESABILITADAS
+       Animação de scroll-reveal removida para melhor performance e fluidez
        ============================================================ */
-    .reveal {
-      opacity: 0;
-      transform: translateY(40px) rotate(2deg);
-      transition: opacity var(--dur) var(--ease), transform var(--dur) var(--ease);
-    }
-    .reveal.in {
+    .reveal,
+    .reveal-no-rotate {
       opacity: 1;
-      transform: translateY(0) rotate(0);
+      transform: none;
     }
-    .reveal-no-rotate { transform: translateY(40px); }
-    .reveal-no-rotate.in { transform: translateY(0); }
 
     @media (prefers-reduced-motion: reduce) {
-      .reveal, .reveal-no-rotate { opacity: 1; transform: none; transition: none; }
       * { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
     }
 
@@ -418,9 +407,8 @@
       top: 50%;
       right: -200px;
       transform: translateY(-50%);
-      background: var(--peach);
-      opacity: 0.6;
-      filter: blur(120px);
+      background: radial-gradient(circle, var(--peach) 0%, rgba(255, 243, 230, 0) 65%);
+      opacity: 0.7;
     }
 
     .value-text {
@@ -530,9 +518,7 @@
     .numbers .blur-orb {
       width: 600px;
       height: 600px;
-      background: var(--coral);
-      opacity: 0.18;
-      filter: blur(120px);
+      background: radial-gradient(circle, rgba(237, 112, 10, 0.32) 0%, rgba(237, 112, 10, 0) 65%);
     }
     .numbers .blur-orb-1 { top: -200px; right: -200px; }
     .numbers .blur-orb-2 { bottom: -300px; left: -200px; }
@@ -621,9 +607,8 @@
     .experience .blur-orb {
       width: 500px;
       height: 500px;
-      background: var(--peach);
-      opacity: 0.6;
-      filter: blur(120px);
+      background: radial-gradient(circle, var(--peach) 0%, rgba(255, 243, 230, 0) 65%);
+      opacity: 0.7;
       bottom: -100px;
       left: 30%;
     }
@@ -1359,9 +1344,9 @@
         </h1>
 
         <p class="hero-sub reveal in">
-          Óculos completo a partir de <strong>R$ 99,90</strong>, pronto em
-          <strong>60 minutos</strong> e com <strong>1 ano de garantia</strong>
-          - Nossas unidades contam com estacionamento gratuito, um delicioso capuccino e cadeira de massagem, clica no botão abaixo e fale com nosso time!
+          Óculos completo a partir de <strong>R$ 99,90</strong> — montado em
+          <strong>60 minutos</strong> no laboratório próprio, com <strong>1 ano de garantia</strong> integral.
+          Estacionamento, cappuccino e cadeira de massagem por nossa conta. Quatro unidades em São Paulo.
         </p>
 
         <div class="hero-ctas reveal in">
@@ -1453,7 +1438,7 @@
           <div class="number-card reveal">
             <div class="label">Tradição</div>
             <div class="value">4</div>
-            <div class="desc">anos no mercado</div>
+            <div class="desc">anos no mercado óptico</div>
           </div>
           <div class="number-card reveal">
             <div class="label">Franquias</div>
@@ -1887,32 +1872,10 @@
   </a>
 
   <!-- ============================================================
-       SCRIPTS — Reveal + Smooth Scroll
+       SCRIPTS — Apenas smooth scroll para âncoras internas
        ============================================================ -->
   <script>
-    /* Intersection Observer com cubic-bezier signature */
-    const io = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('in');
-          io.unobserve(entry.target);
-        }
-      });
-    }, { threshold: 0.12, rootMargin: '0px 0px -50px 0px' });
-
-    document.querySelectorAll('.reveal:not(.in)').forEach(el => io.observe(el));
-
-    /* Stagger delay nas grids */
-    document.querySelectorAll('.features-grid, .numbers-grid, .exp-grid, .process-grid, .testimonials-grid, .locations-grid')
-      .forEach(grid => {
-        Array.from(grid.children).forEach((child, i) => {
-          if (child.classList.contains('reveal')) {
-            child.style.transitionDelay = `${i * 90}ms`;
-          }
-        });
-      });
-
-    /* Smooth scroll anchors */
+    /* Smooth scroll para âncoras */
     document.querySelectorAll('a[href^="#"]').forEach(a => {
       a.addEventListener('click', (e) => {
         const href = a.getAttribute('href');
@@ -1925,18 +1888,6 @@
       });
     });
 
-    /* Nav scroll state - subtle shadow ao rolar */
-    const nav = document.querySelector('.nav');
-    let lastScroll = 0;
-    window.addEventListener('scroll', () => {
-      const y = window.scrollY;
-      if (y > 20) {
-        nav.style.boxShadow = '0 2px 20px rgba(24, 172, 154, 0.04)';
-      } else {
-        nav.style.boxShadow = 'none';
-      }
-      lastScroll = y;
-    });
   </script>
 </body>
 </html>
