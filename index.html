@@ -1,0 +1,2180 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Óticas Idealize — Óculos completo a partir de R$ 99,90, pronto em 60 minutos, com 1 ano de garantia. Estacionamento, cappuccino e cadeira de massagem por nossa conta. Unidades em Campinas, São Vicente, Sorocaba e Piracicaba.">
+  <meta name="theme-color" content="#fcfcfc">
+
+  <meta property="og:title" content="Óticas Idealize · Sua visão merece o ideal">
+  <meta property="og:description" content="Óculos completo R$ 99,90. Pronto em 60 minutos. Estacionamento, cappuccino e cadeira de massagem cortesia.">
+  <meta property="og:type" content="website">
+
+  <title>Óticas Idealize · Sua visão merece o ideal</title>
+
+  <!-- Tipografia editorial: Instrument Serif (headlines) + Manrope (UI/body) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Manrope:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+    /* ============================================================
+       1. DESIGN TOKENS — Red Sun adaptado à paleta Idealize
+       Coral → Laranja Idealize (#ed700a)
+       Ink   → Teal brand oficial (#18ac9a)
+       Soft Peach → Soft Orange brand (#fff3e6)
+       ============================================================ */
+    :root {
+      /* Brand core */
+      --coral: #ed700a;            /* Laranja Idealize - ação principal */
+      --coral-dark: #c95d05;
+      --coral-soft: rgba(237, 112, 10, 0.1);
+      --peach: #fff3e6;            /* Soft Peach adaptado */
+      --peach-deep: #ffe8d1;
+
+      /* Ink (brand teal — paleta oficial Idealize) */
+      --ink: #18ac9a;              /* Teal oficial da marca */
+      --ink-soft: rgba(24, 172, 154, 0.7);
+      --ink-faint: rgba(24, 172, 154, 0.45);
+      --ink-ghost: rgba(24, 172, 154, 0.1);
+      --ink-line: rgba(24, 172, 154, 0.12);
+      --ink-text: #1a1a1a;         /* Para texto sobre fundos claros */
+      --ink-text-soft: rgba(26, 26, 26, 0.7);
+      --ink-text-faint: rgba(26, 26, 26, 0.45);
+
+      /* Teal accent (mesmo da ink agora — alinhamento de marca) */
+      --teal: #18ac9a;
+      --teal-soft: rgba(24, 172, 154, 0.1);
+
+      /* White base */
+      --bg: #fcfcfc;
+      --white: #ffffff;
+      --off-white: #f7f7f5;
+
+      /* Text */
+      --text: #1a1a1a;
+      --text-soft: rgba(26, 26, 26, 0.7);
+      --text-faint: rgba(26, 26, 26, 0.45);
+
+      /* Motion */
+      --ease: cubic-bezier(0.16, 1, 0.3, 1);
+      --dur: 0.9s;
+
+      /* Radii */
+      --r-sm: 16px;
+      --r-md: 24px;
+      --r-lg: 32px;
+      --r-xl: 48px;
+      --r-2xl: 64px;
+      --r-pill: 999px;
+
+      --container: 1320px;
+    }
+
+    /* ============================================================
+       2. RESET + BASE
+       ============================================================ */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+    body {
+      font-family: 'Manrope', system-ui, sans-serif;
+      font-weight: 400;
+      font-size: 18px;
+      line-height: 1.6;
+      color: var(--text);
+      background: var(--bg);
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      overflow-x: hidden;
+    }
+    img { max-width: 100%; display: block; }
+    a { color: inherit; text-decoration: none; transition: opacity 0.3s var(--ease); }
+    button { font-family: inherit; cursor: pointer; border: none; background: none; color: inherit; }
+
+    /* Serif para headlines editoriais */
+    .serif {
+      font-family: 'Instrument Serif', Georgia, serif;
+      font-weight: 400;
+      letter-spacing: -0.015em;
+      line-height: 0.95;
+      color: var(--ink);
+    }
+    .italic {
+      font-family: 'Instrument Serif', Georgia, serif;
+      font-style: italic;
+      font-weight: 400;
+      color: var(--coral);
+    }
+
+    /* Utility label */
+    .util {
+      font-family: 'Manrope', sans-serif;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--coral);
+    }
+    .util-ink { color: var(--ink); }
+    .util-light { color: rgba(255, 255, 255, 0.7); }
+
+    .wrap {
+      width: 100%;
+      max-width: var(--container);
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+    @media (min-width: 768px) { .wrap { padding: 0 48px; } }
+    @media (min-width: 1200px) { .wrap { padding: 0 64px; } }
+
+    section { position: relative; }
+
+    /* Ambient background blurs (Red Sun signature) */
+    .blur-orb {
+      position: absolute;
+      border-radius: 50%;
+      pointer-events: none;
+      z-index: 0;
+    }
+    .blur-orb-coral {
+      background: var(--coral);
+      opacity: 0.1;
+      filter: blur(100px);
+    }
+    .blur-orb-teal {
+      background: var(--teal);
+      opacity: 0.1;
+      filter: blur(100px);
+    }
+    .blur-orb-peach {
+      background: var(--peach);
+      filter: blur(80px);
+    }
+
+    /* ============================================================
+       3. REVEAL ANIMATIONS (fade-up + 2deg rotation per spec)
+       ============================================================ */
+    .reveal {
+      opacity: 0;
+      transform: translateY(40px) rotate(2deg);
+      transition: opacity var(--dur) var(--ease), transform var(--dur) var(--ease);
+    }
+    .reveal.in {
+      opacity: 1;
+      transform: translateY(0) rotate(0);
+    }
+    .reveal-no-rotate { transform: translateY(40px); }
+    .reveal-no-rotate.in { transform: translateY(0); }
+
+    @media (prefers-reduced-motion: reduce) {
+      .reveal, .reveal-no-rotate { opacity: 1; transform: none; transition: none; }
+      * { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
+    }
+
+    /* ============================================================
+       4. NAV — Glassmorphism (Red Sun spec)
+       ============================================================ */
+    .nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      height: 72px;
+      z-index: 100;
+      background: rgba(252, 252, 252, 0.8);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--ink-ghost);
+    }
+    .nav-inner {
+      max-width: var(--container);
+      margin: 0 auto;
+      height: 100%;
+      padding: 0 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+    }
+    @media (min-width: 768px) { .nav-inner { padding: 0 48px; } }
+    @media (min-width: 1200px) { .nav-inner { padding: 0 64px; } }
+
+    /* Rotating Logo Mark (Red Sun signature component) */
+    .logo-mark {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+    .logo-square {
+      width: 38px;
+      height: 38px;
+      background: var(--coral);
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transform: rotate(-3deg);
+      transition: transform 0.3s var(--ease);
+      box-shadow: 0 4px 16px rgba(237, 112, 10, 0.25);
+    }
+    .logo-square:hover { transform: rotate(12deg); }
+    .logo-square span {
+      font-family: 'Instrument Serif', serif;
+      font-style: italic;
+      font-weight: 400;
+      color: var(--white);
+      font-size: 24px;
+      line-height: 1;
+    }
+    .logo-text {
+      font-family: 'Manrope', sans-serif;
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--ink);
+      line-height: 1.1;
+    }
+    .logo-text small {
+      display: block;
+      font-size: 9px;
+      font-weight: 500;
+      letter-spacing: 0.25em;
+      color: var(--ink-faint);
+      margin-bottom: 2px;
+    }
+
+    .nav-menu {
+      display: none;
+      align-items: center;
+      gap: 36px;
+      list-style: none;
+    }
+    .nav-menu a {
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--ink-soft);
+      transition: color 0.3s var(--ease);
+    }
+    .nav-menu a:hover { color: var(--coral); }
+    @media (min-width: 980px) { .nav-menu { display: flex; } }
+
+    .nav-cta {
+      background: var(--coral);
+      color: var(--white);
+      padding: 12px 24px;
+      border-radius: 30px;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      box-shadow: 0 8px 20px rgba(237, 112, 10, 0.25);
+      transition: all 0.4s var(--ease);
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .nav-cta:hover {
+      background: var(--coral-dark);
+      transform: translateY(-2px);
+      box-shadow: 0 12px 28px rgba(237, 112, 10, 0.35);
+    }
+
+    /* ============================================================
+       5. HERO — Centered editorial
+       ============================================================ */
+    .hero {
+      position: relative;
+      padding: 160px 0 100px;
+      text-align: center;
+      overflow: hidden;
+    }
+    .hero .blur-orb {
+      width: 520px;
+      height: 520px;
+    }
+    .hero .blur-orb-1 { top: 80px; right: -100px; }
+    .hero .blur-orb-2 { bottom: -100px; left: -100px; }
+
+    .hero-content {
+      position: relative;
+      z-index: 1;
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: var(--peach);
+      color: var(--ink);
+      padding: 10px 20px;
+      border-radius: 999px;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      margin-bottom: 40px;
+    }
+    .hero-badge-sparkle {
+      width: 16px;
+      height: 16px;
+      color: var(--coral);
+      flex-shrink: 0;
+    }
+
+    .hero h1 {
+      font-family: 'Instrument Serif', serif;
+      font-weight: 400;
+      font-size: clamp(56px, 11vw, 160px);
+      line-height: 0.92;
+      letter-spacing: -0.025em;
+      color: var(--ink);
+      margin-bottom: 36px;
+    }
+    .hero h1 .line { display: block; }
+    .hero h1 .italic {
+      font-style: italic;
+      color: var(--coral);
+    }
+
+    .hero-sub {
+      font-size: clamp(16px, 1.4vw, 19px);
+      line-height: 1.55;
+      color: var(--text-soft);
+      max-width: 620px;
+      margin: 0 auto 48px;
+    }
+    .hero-sub strong { color: var(--ink); font-weight: 700; }
+
+    .hero-ctas {
+      display: flex;
+      gap: 16px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 18px 32px;
+      border-radius: 30px;
+      font-size: 14px;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      transition: all 0.4s var(--ease);
+      font-family: 'Manrope', sans-serif;
+    }
+    .btn-primary {
+      background: var(--coral);
+      color: var(--white);
+      box-shadow: 0 16px 40px rgba(237, 112, 10, 0.3);
+    }
+    .btn-primary:hover {
+      background: var(--coral-dark);
+      transform: translateY(-2px);
+      box-shadow: 0 22px 48px rgba(237, 112, 10, 0.4);
+    }
+    .btn-ghost {
+      background: transparent;
+      color: var(--ink);
+      border: 2px solid var(--ink-ghost);
+    }
+    .btn-ghost:hover {
+      border-color: var(--coral);
+      color: var(--coral);
+    }
+
+    /* Trust micro under hero */
+    .hero-trust {
+      margin-top: 56px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 16px 40px;
+      justify-content: center;
+      align-items: center;
+    }
+    .hero-trust-item {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 13px;
+      color: var(--text-soft);
+      font-weight: 500;
+    }
+    .hero-trust-item strong { color: var(--ink); font-weight: 700; }
+    .hero-trust-dot {
+      width: 4px;
+      height: 4px;
+      border-radius: 50%;
+      background: var(--coral);
+    }
+    .hero-trust .stars { color: var(--coral); letter-spacing: 2px; }
+
+    /* ============================================================
+       6. VALUE PROPOSITION — Manifesto centralizado + 3 cards
+       ============================================================ */
+    .value-prop {
+      padding: 120px 0;
+      position: relative;
+    }
+    .value-prop .blur-orb {
+      width: 600px;
+      height: 600px;
+      top: 50%;
+      right: -200px;
+      transform: translateY(-50%);
+      background: var(--peach);
+      opacity: 0.6;
+      filter: blur(120px);
+    }
+
+    .value-text {
+      position: relative;
+      z-index: 1;
+      max-width: 820px;
+      margin: 0 auto;
+      text-align: center;
+    }
+    .value-text .util { margin-bottom: 24px; display: inline-block; }
+    .value-text h2 {
+      font-family: 'Instrument Serif', serif;
+      font-weight: 400;
+      font-size: clamp(40px, 6vw, 80px);
+      line-height: 1;
+      letter-spacing: -0.02em;
+      color: var(--ink);
+      margin-bottom: 32px;
+    }
+    .value-text h2 .italic { font-style: italic; color: var(--coral); }
+    .value-text .value-intro {
+      font-size: clamp(16px, 1.6vw, 19px);
+      color: var(--text-soft);
+      line-height: 1.65;
+      max-width: 620px;
+      margin: 0 auto;
+    }
+
+    .value-features {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 24px;
+      margin-top: 72px;
+      list-style: none;
+      position: relative;
+      z-index: 1;
+    }
+    @media (min-width: 768px) {
+      .value-features { grid-template-columns: repeat(3, 1fr); gap: 28px; }
+    }
+
+    .value-features li {
+      background: var(--peach);
+      padding: 40px 36px;
+      border-radius: 32px;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 24px;
+      transition: transform 0.5s var(--ease), box-shadow 0.5s var(--ease);
+    }
+    .value-features li:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 30px 60px rgba(237, 112, 10, 0.15);
+    }
+    .value-feature-icon {
+      width: 64px;
+      height: 64px;
+      flex-shrink: 0;
+      border-radius: 20px;
+      background: var(--coral);
+      color: var(--white);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.4s var(--ease);
+    }
+    .value-features li:hover .value-feature-icon {
+      transform: rotate(-6deg) scale(1.05);
+    }
+    .value-feature-text h4 {
+      font-family: 'Instrument Serif', serif;
+      font-weight: 400;
+      font-size: 28px;
+      line-height: 1;
+      letter-spacing: -0.02em;
+      color: var(--ink);
+      margin-bottom: 12px;
+    }
+    .value-feature-text p {
+      font-size: 15px;
+      color: var(--ink-text-soft);
+      line-height: 1.55;
+    }
+
+    /* ============================================================
+       7. FEATURES GRID — Bento 3-col
+       ============================================================ */
+    .features {
+      padding: 120px 0;
+      background: var(--off-white);
+      position: relative;
+    }
+
+    .features-header {
+      text-align: center;
+      max-width: 720px;
+      margin: 0 auto 80px;
+    }
+    .features-header .util { display: inline-block; margin-bottom: 20px; }
+    .features-header h2 {
+      font-family: 'Instrument Serif', serif;
+      font-weight: 400;
+      font-size: clamp(40px, 6vw, 80px);
+      line-height: 1;
+      letter-spacing: -0.02em;
+      color: var(--ink);
+    }
+    .features-header h2 .italic { font-style: italic; color: var(--coral); }
+    .features-header p {
+      margin-top: 24px;
+      font-size: 17px;
+      color: var(--text-soft);
+      line-height: 1.55;
+    }
+
+    .features-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 24px;
+    }
+    @media (min-width: 768px) {
+      .features-grid {
+        grid-template-columns: repeat(3, 1fr);
+        grid-auto-rows: minmax(300px, auto);
+      }
+    }
+
+    .feature-card {
+      border-radius: 48px;
+      padding: 48px;
+      position: relative;
+      overflow: hidden;
+      transition: transform 0.5s var(--ease), box-shadow 0.5s var(--ease);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      text-decoration: none;
+    }
+    .feature-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 30px 60px rgba(24, 172, 154, 0.1);
+    }
+    @media (min-width: 768px) {
+      .feature-card-large { grid-column: span 2; }
+    }
+
+    .feature-card-light {
+      background: var(--white);
+      border: 1px solid var(--ink-ghost);
+      color: var(--ink);
+    }
+    .feature-card-dark {
+      background: var(--ink);
+      color: var(--white);
+    }
+    .feature-card-coral {
+      background: var(--peach);
+      color: var(--ink);
+    }
+
+    .feature-icon {
+      width: 72px;
+      height: 72px;
+      border-radius: 20px;
+      background: var(--peach);
+      color: var(--coral);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 32px;
+      transition: all 0.4s var(--ease);
+    }
+    .feature-card-dark .feature-icon {
+      background: rgba(237, 112, 10, 0.18);
+      color: var(--coral);
+    }
+    .feature-card-coral .feature-icon {
+      background: var(--coral);
+      color: var(--white);
+    }
+    .feature-card:hover .feature-icon {
+      transform: rotate(-6deg) scale(1.05);
+    }
+
+    .feature-card .price {
+      font-family: 'Instrument Serif', serif;
+      font-style: italic;
+      font-weight: 400;
+      font-size: clamp(36px, 4vw, 56px);
+      line-height: 1;
+      color: var(--coral);
+      margin-bottom: 12px;
+    }
+    .feature-card-dark .price { color: var(--coral); }
+
+    .feature-card h3 {
+      font-family: 'Manrope', sans-serif;
+      font-size: clamp(22px, 2.4vw, 28px);
+      font-weight: 700;
+      line-height: 1.15;
+      letter-spacing: -0.015em;
+      margin-bottom: 12px;
+    }
+    .feature-card p {
+      font-size: 15px;
+      line-height: 1.55;
+      opacity: 0.85;
+      margin-bottom: 32px;
+      flex-grow: 1;
+    }
+    .feature-card-dark p { opacity: 0.7; }
+
+    .feature-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      transition: gap 0.4s var(--ease);
+      color: var(--coral);
+    }
+    .feature-card-dark .feature-link { color: var(--coral); }
+    .feature-card:hover .feature-link { gap: 14px; }
+
+    /* Decorative bg icon on featured card */
+    .feature-bg-icon {
+      position: absolute;
+      bottom: -40px;
+      right: -40px;
+      width: 280px;
+      height: 280px;
+      opacity: 0.06;
+      color: var(--ink);
+      pointer-events: none;
+    }
+
+    /* ============================================================
+       8. NUMBERS — Authority stats
+       ============================================================ */
+    .numbers {
+      padding: 140px 0;
+      background: var(--ink);
+      color: var(--white);
+      position: relative;
+      overflow: hidden;
+    }
+    /* Overlay sutil para melhorar contraste do texto branco sobre o teal */
+    .numbers::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, rgba(0, 0, 0, 0.12) 0%, rgba(0, 0, 0, 0) 60%);
+      pointer-events: none;
+    }
+    .numbers .blur-orb {
+      width: 600px;
+      height: 600px;
+      background: var(--coral);
+      opacity: 0.18;
+      filter: blur(120px);
+    }
+    .numbers .blur-orb-1 { top: -200px; right: -200px; }
+    .numbers .blur-orb-2 { bottom: -300px; left: -200px; }
+
+    .numbers-content {
+      position: relative;
+      z-index: 1;
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 80px;
+      align-items: center;
+    }
+    @media (min-width: 980px) {
+      .numbers-content { grid-template-columns: 0.9fr 1.1fr; }
+    }
+
+    .numbers-text .util-light { display: block; margin-bottom: 24px; }
+    .numbers-text h2 {
+      font-family: 'Instrument Serif', serif;
+      font-weight: 400;
+      font-size: clamp(40px, 6vw, 80px);
+      line-height: 1;
+      letter-spacing: -0.02em;
+      color: var(--white);
+      text-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+    }
+    .numbers-text h2 .italic { color: var(--peach); }
+    .numbers-text p {
+      margin-top: 24px;
+      font-size: 17px;
+      line-height: 1.55;
+      color: rgba(255, 255, 255, 0.92);
+      max-width: 420px;
+    }
+
+    .numbers-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 24px;
+    }
+    .number-card {
+      background: rgba(255, 255, 255, 0.12);
+      border: 1px solid rgba(255, 255, 255, 0.22);
+      border-radius: 32px;
+      padding: 36px;
+      backdrop-filter: blur(10px);
+      transition: all 0.4s var(--ease);
+    }
+    .number-card:hover {
+      background: rgba(255, 255, 255, 0.18);
+      transform: translateY(-4px);
+    }
+    .number-card .label {
+      font-size: 10px;
+      font-weight: 800;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--peach);
+      margin-bottom: 16px;
+    }
+    .number-card .value {
+      font-family: 'Instrument Serif', serif;
+      font-weight: 400;
+      font-size: clamp(48px, 6vw, 80px);
+      line-height: 1;
+      letter-spacing: -0.03em;
+      color: var(--white);
+      margin-bottom: 8px;
+      text-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    }
+    .number-card .value .italic { color: var(--peach); font-style: italic; }
+    .number-card .desc {
+      font-size: 13px;
+      line-height: 1.4;
+      color: rgba(255, 255, 255, 0.88);
+      font-weight: 500;
+    }
+
+    /* ============================================================
+       9. EXPERIENCE — Bento highlighting 3 pillars
+       ============================================================ */
+    .experience {
+      padding: 120px 0;
+      position: relative;
+    }
+    .experience .blur-orb {
+      width: 500px;
+      height: 500px;
+      background: var(--peach);
+      opacity: 0.6;
+      filter: blur(120px);
+      bottom: -100px;
+      left: 30%;
+    }
+
+    .experience-header {
+      max-width: 720px;
+      margin-bottom: 64px;
+      position: relative;
+      z-index: 1;
+    }
+    .experience-header .util { display: block; margin-bottom: 24px; }
+    .experience-header h2 {
+      font-family: 'Instrument Serif', serif;
+      font-weight: 400;
+      font-size: clamp(40px, 6vw, 80px);
+      line-height: 1;
+      letter-spacing: -0.02em;
+      color: var(--ink);
+    }
+    .experience-header h2 .italic { font-style: italic; color: var(--coral); }
+    .experience-header p {
+      margin-top: 24px;
+      font-size: 17px;
+      color: var(--text-soft);
+      line-height: 1.55;
+    }
+
+    .exp-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 24px;
+      position: relative;
+      z-index: 1;
+    }
+    @media (min-width: 768px) {
+      .exp-grid {
+        grid-template-columns: repeat(12, 1fr);
+      }
+    }
+
+    .exp-card {
+      border-radius: 48px;
+      padding: 48px;
+      transition: transform 0.5s var(--ease), box-shadow 0.5s var(--ease);
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+    }
+    .exp-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 30px 60px rgba(24, 172, 154, 0.1);
+    }
+    @media (min-width: 768px) {
+      .exp-1 { grid-column: span 7; min-height: 380px; }
+      .exp-2 { grid-column: span 5; min-height: 380px; }
+      .exp-3 { grid-column: span 5; min-height: 320px; }
+      .exp-4 { grid-column: span 4; min-height: 320px; }
+      .exp-5 { grid-column: span 3; min-height: 320px; }
+    }
+
+    .exp-1 {
+      background: var(--coral);
+      color: var(--white);
+    }
+    .exp-2 {
+      background: var(--ink);
+      color: var(--white);
+    }
+    .exp-3 {
+      background: var(--peach);
+      color: var(--ink);
+    }
+    .exp-4 {
+      background: var(--white);
+      border: 1px solid var(--ink-ghost);
+      color: var(--ink);
+    }
+    .exp-5 {
+      background: var(--white);
+      border: 1px solid var(--ink-ghost);
+      color: var(--ink);
+    }
+
+    .exp-num {
+      font-family: 'Instrument Serif', serif;
+      font-style: italic;
+      font-weight: 400;
+      font-size: 24px;
+      line-height: 1;
+      opacity: 0.7;
+      margin-bottom: 24px;
+    }
+    .exp-1 .exp-num { color: rgba(255, 255, 255, 0.8); }
+    .exp-2 .exp-num { color: var(--coral); opacity: 1; }
+    .exp-3 .exp-num,
+    .exp-4 .exp-num,
+    .exp-5 .exp-num { color: var(--coral); opacity: 1; }
+
+    .exp-card h3 {
+      font-family: 'Instrument Serif', serif;
+      font-weight: 400;
+      font-size: clamp(28px, 3.6vw, 44px);
+      line-height: 1;
+      letter-spacing: -0.02em;
+      margin-bottom: 16px;
+      margin-top: auto;
+    }
+    .exp-card h3 .italic { font-style: italic; color: var(--coral); }
+    .exp-1 h3 .italic, .exp-2 h3 .italic { color: var(--white); }
+
+    .exp-card p {
+      font-size: 15px;
+      line-height: 1.55;
+      opacity: 0.85;
+    }
+    .exp-2 p, .exp-1 p { opacity: 0.7; }
+
+    .exp-icon {
+      width: 56px;
+      height: 56px;
+      border-radius: 16px;
+      background: rgba(255, 255, 255, 0.2);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--white);
+      margin-bottom: 20px;
+    }
+    .exp-3 .exp-icon { background: rgba(237, 112, 10, 0.15); color: var(--coral); }
+    .exp-4 .exp-icon, .exp-5 .exp-icon { background: var(--peach); color: var(--coral); }
+
+    /* ============================================================
+       10. PROCESS — 4 steps editorial
+       ============================================================ */
+    .process {
+      padding: 120px 0;
+      background: var(--off-white);
+    }
+    .process-header {
+      text-align: center;
+      max-width: 720px;
+      margin: 0 auto 80px;
+    }
+    .process-header .util { display: inline-block; margin-bottom: 20px; }
+    .process-header h2 {
+      font-family: 'Instrument Serif', serif;
+      font-weight: 400;
+      font-size: clamp(40px, 6vw, 80px);
+      line-height: 1;
+      letter-spacing: -0.02em;
+      color: var(--ink);
+    }
+    .process-header h2 .italic { font-style: italic; color: var(--coral); }
+
+    .process-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 24px;
+    }
+    @media (min-width: 600px) { .process-grid { grid-template-columns: repeat(2, 1fr); } }
+    @media (min-width: 980px) { .process-grid { grid-template-columns: repeat(4, 1fr); } }
+
+    .process-step {
+      background: var(--white);
+      border-radius: 32px;
+      padding: 40px;
+      border: 1px solid var(--ink-ghost);
+      transition: all 0.4s var(--ease);
+    }
+    .process-step:hover {
+      border-color: var(--coral);
+      transform: translateY(-4px);
+    }
+    .process-num {
+      font-family: 'Instrument Serif', serif;
+      font-style: italic;
+      font-weight: 400;
+      font-size: 64px;
+      line-height: 1;
+      color: var(--coral);
+      margin-bottom: 24px;
+    }
+    .process-step h3 {
+      font-family: 'Manrope', sans-serif;
+      font-size: 20px;
+      font-weight: 700;
+      line-height: 1.1;
+      color: var(--ink);
+      margin-bottom: 12px;
+    }
+    .process-step p {
+      font-size: 14px;
+      line-height: 1.55;
+      color: var(--text-soft);
+    }
+
+    /* ============================================================
+       11. TESTIMONIALS — Editorial pull quotes
+       ============================================================ */
+    .testimonials {
+      padding: 140px 0;
+      position: relative;
+      overflow: hidden;
+    }
+    .testimonials .blur-orb {
+      width: 500px;
+      height: 500px;
+      top: 20%;
+      right: -150px;
+    }
+
+    .testimonials-header {
+      text-align: center;
+      max-width: 720px;
+      margin: 0 auto 80px;
+      position: relative;
+      z-index: 1;
+    }
+    .testimonials-header .util { display: inline-block; margin-bottom: 20px; }
+    .testimonials-header h2 {
+      font-family: 'Instrument Serif', serif;
+      font-weight: 400;
+      font-size: clamp(40px, 6vw, 72px);
+      line-height: 1;
+      letter-spacing: -0.02em;
+      color: var(--ink);
+    }
+    .testimonials-header h2 .italic { font-style: italic; color: var(--coral); }
+
+    .testimonials-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 32px;
+      position: relative;
+      z-index: 1;
+    }
+    @media (min-width: 768px) { .testimonials-grid { grid-template-columns: repeat(3, 1fr); } }
+
+    .testimonial {
+      background: var(--white);
+      border: 1px solid var(--ink-ghost);
+      border-radius: 32px;
+      padding: 40px;
+      transition: all 0.4s var(--ease);
+    }
+    .testimonial:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 30px 60px rgba(24, 172, 154, 0.1);
+    }
+    .testimonial-stars {
+      color: var(--coral);
+      font-size: 16px;
+      letter-spacing: 3px;
+      margin-bottom: 24px;
+    }
+    .testimonial-text {
+      font-family: 'Instrument Serif', serif;
+      font-weight: 400;
+      font-size: 22px;
+      line-height: 1.3;
+      color: var(--ink);
+      margin-bottom: 32px;
+      letter-spacing: -0.01em;
+    }
+    .testimonial-author {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+    .testimonial-avatar {
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      background: var(--coral);
+      color: var(--white);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Instrument Serif', serif;
+      font-style: italic;
+      font-size: 20px;
+      transform: rotate(-3deg);
+    }
+    .testimonial-name {
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--ink);
+      line-height: 1.2;
+    }
+    .testimonial-loc {
+      font-size: 12px;
+      color: var(--text-soft);
+      margin-top: 2px;
+    }
+
+    /* ============================================================
+       12. LOCATIONS — 4 unit cards
+       ============================================================ */
+    .locations {
+      padding: 120px 0;
+      background: var(--off-white);
+    }
+    .locations-header {
+      text-align: center;
+      max-width: 720px;
+      margin: 0 auto 80px;
+    }
+    .locations-header .util { display: inline-block; margin-bottom: 20px; }
+    .locations-header h2 {
+      font-family: 'Instrument Serif', serif;
+      font-weight: 400;
+      font-size: clamp(40px, 6vw, 80px);
+      line-height: 1;
+      letter-spacing: -0.02em;
+      color: var(--ink);
+    }
+    .locations-header h2 .italic { font-style: italic; color: var(--coral); }
+
+    .locations-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 24px;
+    }
+    @media (min-width: 640px) { .locations-grid { grid-template-columns: repeat(2, 1fr); } }
+    @media (min-width: 1100px) { .locations-grid { grid-template-columns: repeat(4, 1fr); } }
+
+    .unit {
+      background: var(--white);
+      border-radius: 32px;
+      padding: 36px;
+      border: 1px solid var(--ink-ghost);
+      transition: all 0.4s var(--ease);
+      display: flex;
+      flex-direction: column;
+    }
+    .unit:hover {
+      transform: translateY(-6px);
+      border-color: var(--coral);
+      box-shadow: 0 30px 60px rgba(24, 172, 154, 0.08);
+    }
+    .unit-num {
+      font-family: 'Instrument Serif', serif;
+      font-style: italic;
+      font-size: 36px;
+      color: var(--coral);
+      line-height: 1;
+      margin-bottom: 12px;
+    }
+    .unit-city {
+      font-family: 'Instrument Serif', serif;
+      font-weight: 400;
+      font-size: 36px;
+      line-height: 1;
+      letter-spacing: -0.02em;
+      color: var(--ink);
+      margin-bottom: 24px;
+    }
+    .unit-info {
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+      margin-bottom: 28px;
+      flex-grow: 1;
+    }
+    .unit-row {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+    .unit-row-label {
+      font-size: 10px;
+      font-weight: 800;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--text-faint);
+    }
+    .unit-row-value {
+      font-size: 14px;
+      color: var(--ink);
+      line-height: 1.4;
+      font-weight: 500;
+    }
+    .unit-actions {
+      display: flex;
+      gap: 8px;
+    }
+    .unit-btn {
+      flex: 1;
+      padding: 12px 14px;
+      border-radius: 30px;
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      text-align: center;
+      transition: all 0.4s var(--ease);
+    }
+    .unit-btn-primary {
+      background: var(--coral);
+      color: var(--white);
+    }
+    .unit-btn-primary:hover { background: var(--coral-dark); }
+    .unit-btn-ghost {
+      background: transparent;
+      color: var(--ink);
+      border: 1.5px solid var(--ink-ghost);
+    }
+    .unit-btn-ghost:hover { border-color: var(--ink); }
+
+    /* ============================================================
+       13. FINAL CTA — 64px rounded coral container
+       ============================================================ */
+    .final {
+      padding: 80px 0 120px;
+    }
+    .final-container {
+      background: var(--coral);
+      border-radius: 64px;
+      padding: clamp(64px, 10vw, 120px) clamp(32px, 6vw, 80px);
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+      color: var(--white);
+    }
+    /* Dot grid pattern */
+    .final-container::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image: radial-gradient(circle, rgba(255, 255, 255, 0.2) 1.5px, transparent 1.5px);
+      background-size: 30px 30px;
+      opacity: 1;
+      pointer-events: none;
+    }
+    .final-content {
+      position: relative;
+      z-index: 1;
+    }
+    .final .util {
+      color: rgba(255, 255, 255, 0.85);
+      display: inline-block;
+      margin-bottom: 24px;
+    }
+    .final h2 {
+      font-family: 'Instrument Serif', serif;
+      font-weight: 400;
+      font-size: clamp(56px, 9vw, 128px);
+      line-height: 0.92;
+      letter-spacing: -0.025em;
+      color: var(--white);
+      margin-bottom: 28px;
+    }
+    .final h2 .italic {
+      font-style: italic;
+      color: var(--peach);
+    }
+    .final p {
+      font-size: clamp(16px, 1.6vw, 19px);
+      line-height: 1.5;
+      color: rgba(255, 255, 255, 0.92);
+      max-width: 600px;
+      margin: 0 auto 48px;
+    }
+    .btn-final {
+      background: var(--white);
+      color: var(--coral);
+      padding: 22px 44px;
+      font-size: 14px;
+      font-weight: 800;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      border-radius: 30px;
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.25);
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      transition: all 0.4s var(--ease);
+    }
+    .btn-final:hover {
+      background: var(--ink);
+      color: var(--white);
+      transform: translateY(-3px);
+    }
+    .final-trust {
+      margin-top: 56px;
+      display: flex;
+      gap: 12px 32px;
+      justify-content: center;
+      flex-wrap: wrap;
+      font-size: 10px;
+      font-weight: 800;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: rgba(255, 255, 255, 0.8);
+    }
+    .final-trust span:not(:last-child)::after {
+      content: '·';
+      margin-left: 32px;
+      color: rgba(255, 255, 255, 0.5);
+    }
+
+    /* ============================================================
+       14. FOOTER — Deep Ink 5-column
+       ============================================================ */
+    .footer {
+      background: var(--ink);
+      color: rgba(255, 255, 255, 0.85);
+      padding: 100px 0 32px;
+    }
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 56px;
+      margin-bottom: 80px;
+    }
+    @media (min-width: 768px) {
+      .footer-grid { grid-template-columns: 2fr 1fr 1fr 1fr; }
+    }
+    .footer-brand .logo-mark { margin-bottom: 24px; }
+    .footer-brand .logo-text { color: var(--white); }
+    .footer-brand .logo-text small { color: rgba(255, 255, 255, 0.5); }
+    .footer-brand p {
+      font-size: 15px;
+      line-height: 1.55;
+      color: rgba(255, 255, 255, 0.65);
+      max-width: 320px;
+      margin-bottom: 24px;
+    }
+    .footer-social {
+      display: flex;
+      gap: 12px;
+    }
+    .footer-social a {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.4s var(--ease);
+    }
+    .footer-social a:hover {
+      background: var(--coral);
+      border-color: var(--coral);
+      transform: translateY(-3px);
+    }
+    .footer-social svg { width: 16px; height: 16px; fill: currentColor; }
+
+    .footer h4 {
+      font-family: 'Instrument Serif', serif;
+      font-weight: 400;
+      font-size: 22px;
+      color: var(--white);
+      margin-bottom: 20px;
+      letter-spacing: -0.01em;
+    }
+    .footer ul { list-style: none; }
+    .footer ul li {
+      padding: 6px 0;
+      font-size: 14px;
+    }
+    .footer ul li a {
+      color: rgba(255, 255, 255, 0.65);
+      transition: color 0.3s var(--ease);
+    }
+    .footer ul li a:hover { color: var(--coral); }
+
+    .footer-bottom {
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
+      padding-top: 32px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      align-items: center;
+      text-align: center;
+    }
+    @media (min-width: 768px) {
+      .footer-bottom {
+        flex-direction: row;
+        justify-content: space-between;
+        text-align: left;
+      }
+    }
+    .footer-legal-row {
+      display: flex;
+      gap: 24px;
+      flex-wrap: wrap;
+      justify-content: center;
+      font-size: 11px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: rgba(255, 255, 255, 0.45);
+      font-weight: 600;
+    }
+    .footer-copy {
+      font-size: 11px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: rgba(255, 255, 255, 0.45);
+      font-weight: 600;
+    }
+
+    .footer-disclaimer {
+      grid-column: 1 / -1;
+      font-size: 12px;
+      line-height: 1.6;
+      color: rgba(255, 255, 255, 0.4);
+      max-width: 900px;
+      margin: 0 auto 32px;
+      text-align: center;
+      font-style: italic;
+    }
+
+    /* ============================================================
+       15. WHATSAPP FLOATING BUTTON
+       ============================================================ */
+    .whatsapp-fab {
+      position: fixed;
+      bottom: 24px;
+      right: 24px;
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      background: #25D366;
+      color: var(--white);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 12px 32px rgba(37, 211, 102, 0.45);
+      z-index: 99;
+      transition: transform 0.4s var(--ease);
+    }
+    .whatsapp-fab::before {
+      content: '';
+      position: absolute;
+      inset: -8px;
+      border-radius: 50%;
+      background: #25D366;
+      opacity: 0.3;
+      animation: ripple 2s infinite;
+      z-index: -1;
+    }
+    @keyframes ripple {
+      0% { transform: scale(0.9); opacity: 0.4; }
+      100% { transform: scale(1.5); opacity: 0; }
+    }
+    .whatsapp-fab:hover { transform: scale(1.1) rotate(8deg); }
+    .whatsapp-fab svg { width: 30px; height: 30px; fill: currentColor; }
+    @media (min-width: 768px) {
+      .whatsapp-fab { width: 64px; height: 64px; bottom: 32px; right: 32px; }
+    }
+
+    /* Accessibility */
+    a:focus-visible, button:focus-visible {
+      outline: 3px solid var(--coral);
+      outline-offset: 4px;
+      border-radius: 8px;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ============================================================
+       NAV — Glassmorphism with rotating logo mark
+       ============================================================ -->
+  <nav class="nav">
+    <div class="nav-inner">
+      <a href="#" class="logo-mark" aria-label="Óticas Idealize">
+        <div class="logo-square"><span>I</span></div>
+        <div class="logo-text">
+          <small>Óticas</small>
+          Idealize
+        </div>
+      </a>
+      <ul class="nav-menu">
+        <li><a href="#manifesto">Manifesto</a></li>
+        <li><a href="#features">Ofertas</a></li>
+        <li><a href="#experience">Experiência</a></li>
+        <li><a href="#locations">Unidades</a></li>
+      </ul>
+      <a href="#locations" class="nav-cta">Visitar loja →</a>
+    </div>
+  </nav>
+
+  <!-- ============================================================
+       1. HERO — Centered, Instrument Serif
+       ============================================================ -->
+  <section class="hero">
+    <div class="blur-orb blur-orb-coral blur-orb-1"></div>
+    <div class="blur-orb blur-orb-teal blur-orb-2"></div>
+
+    <div class="wrap">
+      <div class="hero-content">
+        <h1 class="reveal in">
+          <span class="line">Sua visão</span>
+          <span class="line">merece <span class="italic">o ideal.</span></span>
+        </h1>
+
+        <p class="hero-sub reveal in">
+          Óculos completo a partir de <strong>R$ 99,90</strong>.
+          Pronto em até <strong>60 minutos</strong>. Estacionamento, cappuccino e
+          cadeira de massagem por nossa conta. Quatro unidades em São Paulo.
+        </p>
+
+        <div class="hero-ctas reveal in">
+          <a href="#locations" class="btn btn-primary">
+            Visitar a loja mais próxima
+            <span>→</span>
+          </a>
+          <a href="https://wa.me/5519995803876?text=Ol%C3%A1!%20Vim%20pelo%20site%20da%20Idealize"
+             class="btn btn-ghost" target="_blank" rel="noopener">
+            Falar no WhatsApp
+            <span>→</span>
+          </a>
+        </div>
+
+        <div class="hero-trust reveal in">
+          <span class="hero-trust-item">
+            <span class="stars">★★★★★</span>
+            <strong>5 estrelas</strong> no Google
+          </span>
+          <span class="hero-trust-dot"></span>
+          <span class="hero-trust-item">
+            <strong>5 anos</strong> de tradição
+          </span>
+          <span class="hero-trust-dot"></span>
+          <span class="hero-trust-item">
+            <strong>4 unidades</strong> em São Paulo
+          </span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       2. VALUE PROPOSITION — Bento with UI Simulator
+       ============================================================ -->
+  <section class="value-prop" id="manifesto">
+    <div class="blur-orb blur-orb-peach"></div>
+    <div class="wrap">
+      <div class="value-text reveal">
+        <span class="util">— Manifesto Idealize</span>
+        <h2>Tecnologia de laboratório,<br><span class="italic">preço de bairro.</span></h2>
+        <p class="value-intro">
+          Cada loja é equipada com laboratório próprio e tecnologia moderna para entregar
+          o seu óculos no mesmo dia. Não é mágica — é estrutura, treinamento e foco em fazer bem feito,
+          por um preço que cabe no orçamento real das famílias brasileiras.
+        </p>
+      </div>
+
+      <ul class="value-features reveal">
+        <li>
+          <div class="value-feature-icon">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/>
+            </svg>
+          </div>
+          <div class="value-feature-text">
+            <h4>60 minutos no relógio</h4>
+            <p>A maioria dos óculos de visão simples sai da loja no mesmo dia que você chegou.</p>
+          </div>
+        </li>
+        <li>
+          <div class="value-feature-icon">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M20 7L9 18l-5-5"/>
+            </svg>
+          </div>
+          <div class="value-feature-text">
+            <h4>Preço transparente</h4>
+            <p>R$ 49,90 em armações, R$ 99,90 completo. Sem letra miúda, sem taxa escondida.</p>
+          </div>
+        </li>
+        <li>
+          <div class="value-feature-icon">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/>
+            </svg>
+          </div>
+          <div class="value-feature-text">
+            <h4>1 ano de garantia</h4>
+            <p>Todas as armações cobertas integralmente contra defeitos de fábrica.</p>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       3. FEATURES — 3-col bento with offers
+       ============================================================ -->
+  <section class="features" id="features">
+    <div class="wrap">
+      <div class="features-header reveal">
+        <span class="util">— A oferta Idealize</span>
+        <h2>Quatro motivos pra<br><span class="italic">vir hoje.</span></h2>
+        <p>Preço justo, qualidade real, agilidade de laboratório e garantia honesta. É o que define a Idealize em cada uma das quatro unidades.</p>
+      </div>
+
+      <div class="features-grid">
+        <!-- Card 1 - Large light (R$ 99,90) -->
+        <a href="https://wa.me/5519995803876?text=Quero%20o%20%C3%B3culos%20completo%20de%20R%24%2099%2C90"
+           class="feature-card feature-card-light feature-card-large reveal" target="_blank" rel="noopener">
+          <div>
+            <div class="feature-icon">
+              <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="6" cy="15" r="4"/><circle cx="18" cy="15" r="4"/><path d="M10 15h4"/>
+              </svg>
+            </div>
+            <div class="price">R$ 99<span style="font-style:normal;color:var(--ink-soft);font-size:0.6em;">,90</span></div>
+            <h3>Óculos completo:<br>armação + lentes inclusas.</h3>
+            <p>O preço que aparece é o preço que você paga. Lentes de visão simples, armações selecionadas, tudo no mesmo pacote. Sem upsell.</p>
+          </div>
+          <span class="feature-link">Quero esta oferta →</span>
+          <svg class="feature-bg-icon" viewBox="0 0 24 24" fill="currentColor">
+            <circle cx="6" cy="15" r="4"/><circle cx="18" cy="15" r="4"/><path d="M10 15h4" stroke="currentColor" stroke-width="2"/>
+          </svg>
+        </a>
+
+        <!-- Card 2 - Dark ink (60 min) -->
+        <a href="https://wa.me/5519995803876?text=Quero%20saber%20do%20%C3%B3culos%20pronto%20em%2060%20minutos"
+           class="feature-card feature-card-dark reveal" target="_blank" rel="noopener">
+          <div>
+            <div class="feature-icon">
+              <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/>
+              </svg>
+            </div>
+            <div class="price">60min</div>
+            <h3>Express:<br>no mesmo dia.</h3>
+            <p>Laboratório próprio em cada loja. Você vem, escolhe, espera 1 hora e sai já enxergando melhor.</p>
+          </div>
+          <span class="feature-link">Como funciona →</span>
+        </a>
+
+        <!-- Card 3 - Light (R$ 49,90 armações) -->
+        <a href="https://wa.me/5519995803876?text=Quero%20ver%20as%20arma%C3%A7%C3%B5es%20de%20R%24%2049%2C90"
+           class="feature-card feature-card-light reveal" target="_blank" rel="noopener">
+          <div>
+            <div class="feature-icon">
+              <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"/>
+                <line x1="7" y1="7" x2="7.01" y2="7"/>
+              </svg>
+            </div>
+            <div class="price">R$ 49<span style="font-style:normal;color:var(--ink-soft);font-size:0.6em;">,90</span></div>
+            <h3>Armações com<br>curadoria e estilo.</h3>
+            <p>Modelos selecionados. Plástico ou metal, fino ou marcante. Todas com garantia de 1 ano.</p>
+          </div>
+          <span class="feature-link">Ver coleção →</span>
+        </a>
+
+        <!-- Card 4 - Coral (Garantia) -->
+        <a href="https://wa.me/5519995803876?text=Quero%20saber%20sobre%20a%20garantia"
+           class="feature-card feature-card-coral reveal" target="_blank" rel="noopener">
+          <div>
+            <div class="feature-icon">
+              <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+              </svg>
+            </div>
+            <div class="price">12 meses</div>
+            <h3>Garantia integral.</h3>
+            <p>Todas as armações cobertas contra defeitos de fábrica por 1 ano completo.</p>
+          </div>
+          <span class="feature-link">Saber mais →</span>
+        </a>
+
+        <!-- Card 5 - Dark (Experiência) -->
+        <a href="#experience" class="feature-card feature-card-dark feature-card-large reveal">
+          <div>
+            <div class="feature-icon">
+              <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
+              </svg>
+            </div>
+            <div class="price">Cortesia</div>
+            <h3>Estacionamento, cappuccino<br>e cadeira de massagem.</h3>
+            <p>Três detalhes que mudam tudo. Você não veio só comprar óculos — você veio passar uma manhã agradável.</p>
+          </div>
+          <span class="feature-link">Conhecer a experiência →</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       4. NUMBERS — Authority dark
+       ============================================================ -->
+  <section class="numbers">
+    <div class="blur-orb blur-orb-1"></div>
+    <div class="blur-orb blur-orb-2"></div>
+
+    <div class="wrap">
+      <div class="numbers-content">
+        <div class="numbers-text reveal">
+          <span class="util util-light">— A confiança em números</span>
+          <h2>Cinco anos · quatro lojas<br><span class="italic">cinco estrelas.</span></h2>
+          <p>Em cinco anos construímos uma reputação que se mede em avaliações reais — não em propaganda. Todas as quatro unidades têm nota máxima no Google.</p>
+        </div>
+
+        <div class="numbers-grid">
+          <div class="number-card reveal">
+            <div class="label">Tradição</div>
+            <div class="value">05</div>
+            <div class="desc">anos no mercado óptico</div>
+          </div>
+          <div class="number-card reveal">
+            <div class="label">Express</div>
+            <div class="value">60<span class="italic">min</span></div>
+            <div class="desc">tempo médio de montagem</div>
+          </div>
+          <div class="number-card reveal">
+            <div class="label">Avaliação</div>
+            <div class="value">05<span class="italic">★</span></div>
+            <div class="desc">no Google em todas as unidades</div>
+          </div>
+          <div class="number-card reveal">
+            <div class="label">Unidades</div>
+            <div class="value">04</div>
+            <div class="desc">cidades no estado de SP</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       5. EXPERIENCE — 3 pillars bento
+       ============================================================ -->
+  <section class="experience" id="experience">
+    <div class="blur-orb"></div>
+
+    <div class="wrap">
+      <div class="experience-header reveal">
+        <span class="util">— Experiência Idealize</span>
+        <h2>Três coisas que você<br><span class="italic">não esperava</span> de uma ótica.</h2>
+        <p>Quando você decide oferecer mais por menos, cada detalhe importa. Estes são os três que mudam toda a visita.</p>
+      </div>
+
+      <div class="exp-grid">
+
+        <!-- Pillar 01: Estacionamento (large coral) -->
+        <article class="exp-card exp-1 reveal">
+          <div class="exp-num">01</div>
+          <div class="exp-icon">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="3" y="3" width="18" height="18" rx="3"/>
+              <text x="12" y="16" text-anchor="middle" font-size="13" font-weight="800" fill="currentColor" stroke="none">P</text>
+            </svg>
+          </div>
+          <h3>Chegou,<br>estacionou.<br><span class="italic">Sem volta no quarteirão.</span></h3>
+          <p>Vaga grátis na chegada. Não precisa rodar atrás de espaço, pagar zona azul, sair correndo pra alimentar o parquímetro.</p>
+        </article>
+
+        <!-- Pillar 02: Cappuccino (dark ink) -->
+        <article class="exp-card exp-2 reveal">
+          <div class="exp-num">02</div>
+          <div class="exp-icon">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M18 8h1a4 4 0 0 1 0 8h-1"/>
+              <path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"/>
+              <line x1="6" y1="1" x2="6" y2="4"/><line x1="10" y1="1" x2="10" y2="4"/><line x1="14" y1="1" x2="14" y2="4"/>
+            </svg>
+          </div>
+          <h3>Cappuccino<br>na chegada.<br><span class="italic">Cortesia da casa.</span></h3>
+          <p>Detalhe pequeno que muda o jeito como você se sente entrando na loja. Café quentinho, água gelada, à vontade.</p>
+        </article>
+
+        <!-- Pillar 03: Massagem (peach) -->
+        <article class="exp-card exp-3 reveal">
+          <div class="exp-num">03</div>
+          <div class="exp-icon">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M4 21v-7a3 3 0 0 1 3-3h10a3 3 0 0 1 3 3v7"/>
+              <path d="M4 14h16"/>
+            </svg>
+          </div>
+          <h3>Cadeira de<br>massagem<br><span class="italic">enquanto monta.</span></h3>
+          <p>Os 60 minutos de espera viram pausa do dia. Quando o óculos fica pronto, você sai mais relaxado do que entrou.</p>
+        </article>
+
+        <!-- Ambiente (white) -->
+        <article class="exp-card exp-4 reveal">
+          <div class="exp-num">04</div>
+          <div class="exp-icon">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>
+            </svg>
+          </div>
+          <h3>Ambiente<br>climatizado.</h3>
+          <p>Lojas iluminadas, organizadas e ar-condicionado. Você decide com calma.</p>
+        </article>
+
+        <!-- Atendimento (white) -->
+        <article class="exp-card exp-5 reveal">
+          <div class="exp-num">05</div>
+          <div class="exp-icon">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/>
+            </svg>
+          </div>
+          <h3>Atendimento<br>consultivo.</h3>
+          <p>Equipe orienta no seu ritmo. Sem pressão de venda.</p>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       6. PROCESS — 4 steps
+       ============================================================ -->
+  <section class="process">
+    <div class="wrap">
+      <div class="process-header reveal">
+        <span class="util">— Como funciona</span>
+        <h2>Quatro passos<br>até <span class="italic">enxergar melhor.</span></h2>
+      </div>
+
+      <div class="process-grid">
+        <div class="process-step reveal">
+          <div class="process-num">01</div>
+          <h3>Chegue sem stress</h3>
+          <p>Estacione na vaga grátis e entre na hora. Atendimento com ou sem hora marcada.</p>
+        </div>
+        <div class="process-step reveal">
+          <div class="process-num">02</div>
+          <h3>Receba consultoria</h3>
+          <p>Equipe analisa seu formato de rosto, estilo e necessidade pra indicar o modelo certo.</p>
+        </div>
+        <div class="process-step reveal">
+          <div class="process-num">03</div>
+          <h3>Escolha tomando café</h3>
+          <p>Sente, tome um cappuccino e decida com calma. Sem pressão, sem pressa.</p>
+        </div>
+        <div class="process-step reveal">
+          <div class="process-num">04</div>
+          <h3>Saia enxergando</h3>
+          <p>Relaxe na cadeira de massagem. Em 60 minutos seu óculos está pronto.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       7. TESTIMONIALS
+       ============================================================ -->
+  <section class="testimonials">
+    <div class="blur-orb blur-orb-coral"></div>
+
+    <div class="wrap">
+      <div class="testimonials-header reveal">
+        <span class="util">— Quem comprou aprova</span>
+        <h2>5 estrelas no Google<br><span class="italic">não saem do nada.</span></h2>
+      </div>
+
+      <div class="testimonials-grid">
+        <blockquote class="testimonial reveal">
+          <div class="testimonial-stars">★★★★★</div>
+          <p class="testimonial-text">
+            "Saí da loja já usando o óculos novo em menos de uma hora. R$ 99,90 completo,
+            estacionei na porta, atendimento impecável."
+          </p>
+          <div class="testimonial-author">
+            <div class="testimonial-avatar">M</div>
+            <div>
+              <div class="testimonial-name">Mariana Souza</div>
+              <div class="testimonial-loc">Campinas · 2025</div>
+            </div>
+          </div>
+        </blockquote>
+
+        <blockquote class="testimonial reveal">
+          <div class="testimonial-stars">★★★★★</div>
+          <p class="testimonial-text">
+            "Cappuccino, cadeira de massagem enquanto eu esperava o óculos.
+            Tava cético, virei fã. Preço imbatível pra qualidade."
+          </p>
+          <div class="testimonial-author">
+            <div class="testimonial-avatar">R</div>
+            <div>
+              <div class="testimonial-name">Roberto Lima</div>
+              <div class="testimonial-loc">Sorocaba · 2024</div>
+            </div>
+          </div>
+        </blockquote>
+
+        <blockquote class="testimonial reveal">
+          <div class="testimonial-stars">★★★★★</div>
+          <p class="testimonial-text">
+            "Já indiquei a Idealize pra toda família. Preço honesto, garantia
+            de 1 ano e atendimento humano. Voltarei sempre."
+          </p>
+          <div class="testimonial-author">
+            <div class="testimonial-avatar">C</div>
+            <div>
+              <div class="testimonial-name">Camila Ferreira</div>
+              <div class="testimonial-loc">Piracicaba · 2025</div>
+            </div>
+          </div>
+        </blockquote>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       8. LOCATIONS — 4 units with real addresses
+       ============================================================ -->
+  <section class="locations" id="locations">
+    <div class="wrap">
+      <div class="locations-header reveal">
+        <span class="util">— Onde estamos</span>
+        <h2>Quatro lojas,<br>uma <span class="italic">mesma experiência.</span></h2>
+      </div>
+
+      <div class="locations-grid">
+
+        <article class="unit reveal">
+          <div class="unit-num">01</div>
+          <h3 class="unit-city">Campinas</h3>
+          <div class="unit-info">
+            <div class="unit-row">
+              <span class="unit-row-label">Endereço</span>
+              <span class="unit-row-value">Rua Barão de Jaguara, 1164<br>Centro · 13015-002</span>
+            </div>
+            <div class="unit-row">
+              <span class="unit-row-label">WhatsApp</span>
+              <span class="unit-row-value">(19) 99580-3876</span>
+            </div>
+            <div class="unit-row">
+              <span class="unit-row-label">Horário</span>
+              <span class="unit-row-value">Seg–Sex 9h–19h · Sáb 9h–14h</span>
+            </div>
+          </div>
+          <div class="unit-actions">
+            <a href="https://wa.me/5519995803876?text=Quero%20atendimento%20em%20Campinas"
+               class="unit-btn unit-btn-primary" target="_blank" rel="noopener">WhatsApp</a>
+            <a href="https://maps.google.com/?q=Rua+Bar%C3%A3o+de+Jaguara,+1164+-+Centro,+Campinas+-+SP"
+               class="unit-btn unit-btn-ghost" target="_blank" rel="noopener">Mapa</a>
+          </div>
+        </article>
+
+        <article class="unit reveal">
+          <div class="unit-num">02</div>
+          <h3 class="unit-city">São Vicente</h3>
+          <div class="unit-info">
+            <div class="unit-row">
+              <span class="unit-row-label">Endereço</span>
+              <span class="unit-row-value">Av. Antônio Emmerich, 481<br>Vila Melo</span>
+            </div>
+            <div class="unit-row">
+              <span class="unit-row-label">WhatsApp</span>
+              <span class="unit-row-value">(13) 99649-9669</span>
+            </div>
+            <div class="unit-row">
+              <span class="unit-row-label">Horário</span>
+              <span class="unit-row-value">Seg–Sex 9h–19h · Sáb 9h–14h</span>
+            </div>
+          </div>
+          <div class="unit-actions">
+            <a href="https://wa.me/5513996499669?text=Quero%20atendimento%20em%20S%C3%A3o%20Vicente"
+               class="unit-btn unit-btn-primary" target="_blank" rel="noopener">WhatsApp</a>
+            <a href="https://maps.google.com/?q=Av.+Ant%C3%B4nio+Emmerich,+481+-+Vila+Melo,+S%C3%A3o+Vicente+-+SP"
+               class="unit-btn unit-btn-ghost" target="_blank" rel="noopener">Mapa</a>
+          </div>
+        </article>
+
+        <article class="unit reveal">
+          <div class="unit-num">03</div>
+          <h3 class="unit-city">Sorocaba</h3>
+          <div class="unit-info">
+            <div class="unit-row">
+              <span class="unit-row-label">Endereço</span>
+              <span class="unit-row-value">R. Cmdr. Hermelino<br>Matarazzo, 471</span>
+            </div>
+            <div class="unit-row">
+              <span class="unit-row-label">WhatsApp</span>
+              <span class="unit-row-value">(15) 99812-7679</span>
+            </div>
+            <div class="unit-row">
+              <span class="unit-row-label">Horário</span>
+              <span class="unit-row-value">Seg–Sex 9h–19h · Sáb 9h–14h</span>
+            </div>
+          </div>
+          <div class="unit-actions">
+            <a href="https://wa.me/5515998127679?text=Quero%20atendimento%20em%20Sorocaba"
+               class="unit-btn unit-btn-primary" target="_blank" rel="noopener">WhatsApp</a>
+            <a href="https://maps.google.com/?q=R.+Comendador+Hermelino+Matarazzo,+471+-+Sorocaba+-+SP"
+               class="unit-btn unit-btn-ghost" target="_blank" rel="noopener">Mapa</a>
+          </div>
+        </article>
+
+        <article class="unit reveal">
+          <div class="unit-num">04</div>
+          <h3 class="unit-city">Piracicaba</h3>
+          <div class="unit-info">
+            <div class="unit-row">
+              <span class="unit-row-label">Endereço</span>
+              <span class="unit-row-value">Piracicaba · SP<br><em style="color:var(--text-faint);font-style:italic;">[a confirmar]</em></span>
+            </div>
+            <div class="unit-row">
+              <span class="unit-row-label">WhatsApp</span>
+              <span class="unit-row-value">Em breve</span>
+            </div>
+            <div class="unit-row">
+              <span class="unit-row-label">Horário</span>
+              <span class="unit-row-value">Seg–Sex 9h–19h · Sáb 9h–14h</span>
+            </div>
+          </div>
+          <div class="unit-actions">
+            <a href="https://wa.me/5519995803876?text=Quero%20atendimento%20em%20Piracicaba"
+               class="unit-btn unit-btn-primary" target="_blank" rel="noopener">WhatsApp</a>
+            <a href="https://maps.google.com/?q=%C3%93ticas+Idealize+Piracicaba+SP"
+               class="unit-btn unit-btn-ghost" target="_blank" rel="noopener">Mapa</a>
+          </div>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       9. FINAL CTA — Coral rounded with dot pattern
+       ============================================================ -->
+  <section class="final">
+    <div class="wrap">
+      <div class="final-container reveal">
+        <div class="final-content">
+          <span class="util">— Última chamada</span>
+          <h2>Hora de ver<br><span class="italic">melhor.</span></h2>
+          <p>
+            Óculos completo a partir de R$ 99,90. Pronto em 60 minutos.
+            Estacionamento, cappuccino e cadeira de massagem por nossa conta.
+            Vem pra qualquer unidade — a gente te espera.
+          </p>
+          <a href="https://wa.me/5519995803876?text=Quero%20aproveitar%20a%20oferta%20da%20%C3%93ticas%20Idealize"
+             class="btn-final" target="_blank" rel="noopener">
+            Quero aproveitar agora <span>→</span>
+          </a>
+
+          <div class="final-trust">
+            <span>5 anos de tradição</span>
+            <span>4 unidades em SP</span>
+            <span>5 estrelas no Google</span>
+            <span>Pronto em 60 min</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       10. FOOTER — Deep ink
+       ============================================================ -->
+  <footer class="footer">
+    <div class="wrap">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="#" class="logo-mark" aria-label="Óticas Idealize">
+            <div class="logo-square"><span>I</span></div>
+            <div class="logo-text">
+              <small>Óticas</small>
+              Idealize
+            </div>
+          </a>
+          <p>
+            Tecnologia de laboratório, preço de bairro. Quatro lojas em São Paulo
+            para você enxergar melhor sem pagar caro.
+          </p>
+          <div class="footer-social">
+            <a href="#" target="_blank" rel="noopener" aria-label="Instagram">
+              <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zM5.838 12a6.162 6.162 0 1112.324 0 6.162 6.162 0 01-12.324 0zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+            </a>
+            <a href="#" target="_blank" rel="noopener" aria-label="Facebook">
+              <svg viewBox="0 0 24 24"><path d="M9 8h-3v4h3v12h5v-12h3.642l.358-4h-4v-1.667c0-.955.192-1.333 1.115-1.333h2.885v-5h-3.808c-3.596 0-5.192 1.583-5.192 4.615v3.385z"/></svg>
+            </a>
+            <a href="https://wa.me/5519995803876" target="_blank" rel="noopener" aria-label="WhatsApp">
+              <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884"/></svg>
+            </a>
+          </div>
+        </div>
+
+        <div>
+          <h4>Ofertas</h4>
+          <ul>
+            <li><a href="#features">Óculos R$ 99,90</a></li>
+            <li><a href="#features">Armações R$ 49,90</a></li>
+            <li><a href="#features">Express 60min</a></li>
+            <li><a href="#features">Garantia 1 ano</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4>Idealize</h4>
+          <ul>
+            <li><a href="#manifesto">Manifesto</a></li>
+            <li><a href="#experience">Experiência</a></li>
+            <li><a href="#locations">Unidades</a></li>
+            <li><a href="mailto:suporte@oticasidealize.com.br">Contato</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4>Unidades</h4>
+          <ul>
+            <li>Campinas · SP</li>
+            <li>São Vicente · SP</li>
+            <li>Sorocaba · SP</li>
+            <li>Piracicaba · SP</li>
+          </ul>
+        </div>
+      </div>
+
+      <p class="footer-disclaimer">
+        *Ofertas válidas mediante condições da loja. Preço de R$ 99,90 referente a armações
+        selecionadas + lentes monofocais de visão simples em grade específica.
+        Garantia de 1 ano para defeitos de fábrica nas armações. Consulte disponibilidade nas unidades.
+      </p>
+
+      <div class="footer-bottom">
+        <span class="footer-copy">© 2026 Óticas Idealize</span>
+        <div class="footer-legal-row">
+          <span>Privacidade</span>
+          <span>Termos</span>
+          <span>Identidade · Michele Alves</span>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ============================================================
+       WHATSAPP FAB
+       ============================================================ -->
+  <a href="https://wa.me/5519995803876?text=Ol%C3%A1!%20Vim%20pelo%20site%20da%20%C3%93ticas%20Idealize"
+     class="whatsapp-fab" aria-label="Falar no WhatsApp" target="_blank" rel="noopener">
+    <svg viewBox="0 0 24 24">
+      <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+    </svg>
+  </a>
+
+  <!-- ============================================================
+       SCRIPTS — Reveal + Smooth Scroll
+       ============================================================ -->
+  <script>
+    /* Intersection Observer com cubic-bezier signature */
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('in');
+          io.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.12, rootMargin: '0px 0px -50px 0px' });
+
+    document.querySelectorAll('.reveal:not(.in)').forEach(el => io.observe(el));
+
+    /* Stagger delay nas grids */
+    document.querySelectorAll('.features-grid, .numbers-grid, .exp-grid, .process-grid, .testimonials-grid, .locations-grid')
+      .forEach(grid => {
+        Array.from(grid.children).forEach((child, i) => {
+          if (child.classList.contains('reveal')) {
+            child.style.transitionDelay = `${i * 90}ms`;
+          }
+        });
+      });
+
+    /* Smooth scroll anchors */
+    document.querySelectorAll('a[href^="#"]').forEach(a => {
+      a.addEventListener('click', (e) => {
+        const href = a.getAttribute('href');
+        if (href === '#' || href.length < 2) return;
+        const target = document.querySelector(href);
+        if (target) {
+          e.preventDefault();
+          target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      });
+    });
+
+    /* Nav scroll state - subtle shadow ao rolar */
+    const nav = document.querySelector('.nav');
+    let lastScroll = 0;
+    window.addEventListener('scroll', () => {
+      const y = window.scrollY;
+      if (y > 20) {
+        nav.style.boxShadow = '0 2px 20px rgba(24, 172, 154, 0.04)';
+      } else {
+        nav.style.boxShadow = 'none';
+      }
+      lastScroll = y;
+    });
+  </script>
+</body>
+</html>
