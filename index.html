@@ -220,37 +220,216 @@
     .nav-menu a:hover { color: var(--coral); }
     @media (min-width: 980px) { .nav-menu { display: flex; } }
 
+    /* Botão hamburger - visível só em mobile */
+    .nav-toggle {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      width: 44px;
+      height: 44px;
+      gap: 5px;
+      background: transparent;
+      border: none;
+      cursor: pointer;
+      padding: 0;
+      z-index: 102;
+      position: relative;
+    }
+    @media (min-width: 980px) { .nav-toggle { display: none; } }
+
+    .nav-toggle-bar {
+      display: block;
+      width: 24px;
+      height: 2px;
+      background: var(--ink);
+      border-radius: 2px;
+      transition: transform 0.4s var(--ease), opacity 0.3s var(--ease), background 0.3s var(--ease);
+      transform-origin: center;
+    }
+    /* Quando menu aberto: vira X branco */
+    body.menu-open .nav-toggle-bar {
+      background: var(--white);
+    }
+    body.menu-open .nav-toggle-bar:nth-child(1) {
+      transform: translateY(7px) rotate(45deg);
+    }
+    body.menu-open .nav-toggle-bar:nth-child(2) {
+      opacity: 0;
+      transform: scaleX(0);
+    }
+    body.menu-open .nav-toggle-bar:nth-child(3) {
+      transform: translateY(-7px) rotate(-45deg);
+    }
+
+    /* Menu mobile overlay (lateral direito) */
+    .mobile-menu {
+      position: fixed;
+      top: 0;
+      right: 0;
+      width: 100%;
+      height: 100vh;
+      max-width: 420px;
+      background: var(--ink);
+      z-index: 101;
+      transform: translateX(100%);
+      transition: transform 0.5s var(--ease);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      padding: 100px 40px 40px;
+      overflow-y: auto;
+      box-shadow: -20px 0 60px rgba(0, 0, 0, 0.2);
+    }
+    body.menu-open .mobile-menu {
+      transform: translateX(0);
+    }
+    /* Em desktop, o menu mobile fica sempre escondido */
+    @media (min-width: 980px) {
+      .mobile-menu { display: none; }
+    }
+
+    .mobile-menu-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+    }
+    .mobile-menu-list li {
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    }
+    .mobile-menu-list li:last-child {
+      border-bottom: none;
+      margin-top: 24px;
+    }
+    .mobile-menu-list a {
+      display: block;
+      padding: 22px 0;
+      font-family: 'Instrument Serif', serif;
+      font-weight: 400;
+      font-size: 30px;
+      line-height: 1;
+      letter-spacing: -0.02em;
+      color: var(--white);
+      transition: color 0.3s var(--ease), padding 0.3s var(--ease);
+    }
+    .mobile-menu-list a:hover,
+    .mobile-menu-list a:focus {
+      color: var(--coral);
+      padding-left: 8px;
+    }
+
+    .mobile-menu-cta {
+      display: inline-flex !important;
+      align-items: center;
+      gap: 10px;
+      padding: 18px 28px !important;
+      background: var(--coral);
+      color: var(--white) !important;
+      border-radius: 30px;
+      font-family: 'Manrope', sans-serif !important;
+      font-size: 13px !important;
+      font-weight: 700 !important;
+      letter-spacing: 0.08em !important;
+      text-transform: uppercase;
+      width: auto !important;
+    }
+    .mobile-menu-cta:hover {
+      background: var(--coral-dark);
+      padding-left: 28px !important;
+    }
+
+    .mobile-menu-footer {
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: rgba(255, 255, 255, 0.4);
+      margin-top: 40px;
+    }
+
+    /* Backdrop escuro quando menu aberto */
+    body.menu-open::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.5);
+      z-index: 100;
+      animation: backdrop-fade 0.3s ease;
+    }
+    @keyframes backdrop-fade {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+    body.menu-open {
+      overflow: hidden;  /* trava scroll quando menu aberto */
+    }
+
     /* (CTA do nav removido — apenas logo + menu agora) */
 
     /* ============================================================
-       5. HERO — 2 colunas: texto à esquerda, foto à direita
+       5. HERO — Foto da fachada como background com overlay
        ============================================================ */
     .hero {
       position: relative;
-      padding: 140px 0 100px;
-      overflow: hidden;
-    }
-    .hero .blur-orb {
-      width: 520px;
-      height: 520px;
-    }
-    .hero .blur-orb-1 { top: 80px; right: -100px; }
-    .hero .blur-orb-2 { bottom: -100px; left: -100px; }
-
-    .hero-grid {
-      position: relative;
-      z-index: 1;
-      display: grid;
-      grid-template-columns: 1fr;
-      gap: 56px;
+      min-height: 88vh;
+      padding: 180px 0 100px;
+      display: flex;
       align-items: center;
+      overflow: hidden;
+      isolation: isolate;
     }
-    @media (min-width: 980px) {
-      .hero-grid { grid-template-columns: 1.05fr 1fr; gap: 64px; }
+
+    /* Background com a foto */
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      z-index: -2;
+      display: block;
+    }
+    .hero-bg img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center center;
+      display: block;
+    }
+
+    /* Overlay degradê para legibilidade do texto */
+    .hero-overlay {
+      position: absolute;
+      inset: 0;
+      z-index: -1;
+      background:
+        linear-gradient(
+          105deg,
+          rgba(252, 252, 252, 0.95) 0%,
+          rgba(252, 252, 252, 0.88) 32%,
+          rgba(252, 252, 252, 0.55) 60%,
+          rgba(252, 252, 252, 0.35) 100%
+        );
+    }
+    /* Em mobile o overlay precisa ser mais forte e uniforme */
+    @media (max-width: 768px) {
+      .hero-overlay {
+        background:
+          linear-gradient(
+            180deg,
+            rgba(252, 252, 252, 0.92) 0%,
+            rgba(252, 252, 252, 0.78) 40%,
+            rgba(252, 252, 252, 0.55) 100%
+          );
+      }
+    }
+
+    .hero .wrap {
+      position: relative;
+      width: 100%;
     }
 
     .hero-content {
-      max-width: 600px;
+      max-width: 640px;
+      position: relative;
     }
 
     .hero h1 {
@@ -269,9 +448,9 @@
     }
 
     .hero-sub {
-      font-size: clamp(15px, 1.4vw, 18px);
+      font-size: clamp(15px, 1.5vw, 18px);
       line-height: 1.6;
-      color: var(--text-soft);
+      color: var(--text);
       max-width: 560px;
       margin-bottom: 40px;
     }
@@ -281,45 +460,13 @@
       display: flex;
       gap: 16px;
       flex-wrap: wrap;
-      margin-bottom: 0;
     }
 
-    /* Visual do hero: foto da fachada */
-    .hero-visual {
-      position: relative;
-      width: 100%;
-      max-width: 620px;
-      margin-left: auto;
-    }
-    .hero-photo {
-      position: relative;
-      width: 100%;
-      aspect-ratio: 5 / 4;
-      border-radius: 32px;
-      overflow: hidden;
-      box-shadow:
-        0 30px 60px rgba(24, 172, 154, 0.18),
-        0 12px 24px rgba(237, 112, 10, 0.1);
-    }
-    @media (min-width: 768px) {
-      .hero-photo {
-        border-radius: 40px;
-        aspect-ratio: 4 / 3.5;
-      }
-    }
-    .hero-photo img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      object-position: center 35%;
-      display: block;
-    }
-
-    /* Badge flutuante "1h pronto" sobre a foto */
+    /* Badge flutuante "1h pronto" — flutua no canto direito sobre a foto */
     .hero-badge-float {
       position: absolute;
-      bottom: -24px;
-      left: -16px;
+      bottom: -20px;
+      right: 24px;
       width: 132px;
       height: 132px;
       border-radius: 50%;
@@ -330,9 +477,10 @@
       align-items: center;
       justify-content: center;
       text-align: center;
-      box-shadow: 0 16px 40px rgba(237, 112, 10, 0.4);
+      box-shadow: 0 16px 40px rgba(237, 112, 10, 0.45);
       transform: rotate(-6deg);
       transition: transform 0.4s var(--ease);
+      z-index: 2;
     }
     .hero-badge-float:hover { transform: rotate(0deg) scale(1.05); }
     .hero-badge-float .badge-num {
@@ -351,24 +499,20 @@
       margin-top: 4px;
       line-height: 1.3;
     }
-    @media (min-width: 768px) {
+    @media (min-width: 980px) {
       .hero-badge-float {
-        width: 156px;
-        height: 156px;
-        bottom: -30px;
-        left: -28px;
+        width: 160px;
+        height: 160px;
+        bottom: 40px;
+        right: 80px;
       }
-      .hero-badge-float .badge-num { font-size: 52px; }
+      .hero-badge-float .badge-num { font-size: 56px; }
       .hero-badge-float .badge-label { font-size: 10px; }
     }
-    @media (max-width: 600px) {
+    @media (max-width: 768px) {
       .hero-badge-float {
-        bottom: -16px;
-        left: 16px;
-        width: 110px;
-        height: 110px;
+        display: none;  /* No mobile remove para não competir com texto */
       }
-      .hero-badge-float .badge-num { font-size: 38px; }
     }
 
     .btn {
@@ -1366,62 +1510,83 @@
 <body>
 
   <!-- ============================================================
-       NAV — Glassmorphism com logo real
+       NAV — Glassmorphism com logo real + menu mobile
        ============================================================ -->
   <nav class="nav">
     <div class="nav-inner">
       <a href="#" class="logo-mark" aria-label="Óticas Idealize">
         <img src="logo-light.png" alt="Óticas Idealize">
       </a>
+
       <ul class="nav-menu">
         <li><a href="#quem-somos">Quem Somos</a></li>
         <li><a href="#experience">Experiência</a></li>
         <li><a href="#locations">Unidades</a></li>
         <li><a href="https://wa.me/5519995803876?text=Ol%C3%A1!%20Vim%20pelo%20site%20da%20Idealize" target="_blank" rel="noopener">Fale Conosco</a></li>
       </ul>
+
+      <!-- Botão hamburger (mobile) -->
+      <button class="nav-toggle" aria-label="Abrir menu" aria-expanded="false" aria-controls="mobile-menu">
+        <span class="nav-toggle-bar"></span>
+        <span class="nav-toggle-bar"></span>
+        <span class="nav-toggle-bar"></span>
+      </button>
     </div>
   </nav>
 
+  <!-- Menu mobile overlay -->
+  <div class="mobile-menu" id="mobile-menu" aria-hidden="true">
+    <ul class="mobile-menu-list">
+      <li><a href="#quem-somos">Quem Somos</a></li>
+      <li><a href="#experience">Experiência</a></li>
+      <li><a href="#locations">Unidades</a></li>
+      <li>
+        <a href="https://wa.me/5519995803876?text=Ol%C3%A1!%20Vim%20pelo%20site%20da%20Idealize"
+           target="_blank" rel="noopener" class="mobile-menu-cta">
+          Fale Conosco <span>→</span>
+        </a>
+      </li>
+    </ul>
+    <div class="mobile-menu-footer">
+      <span>Óticas Idealize · 4 unidades em SP</span>
+    </div>
+  </div>
+
   <!-- ============================================================
-       1. HERO — 2 colunas: texto + foto da fachada
+       1. HERO — Foto da fachada como background com overlay
        ============================================================ -->
   <section class="hero">
-    <div class="blur-orb blur-orb-coral blur-orb-1"></div>
-    <div class="blur-orb blur-orb-teal blur-orb-2"></div>
+    <picture class="hero-bg">
+      <source media="(max-width: 768px)" srcset="fachada-bg-mobile.jpg">
+      <img src="fachada-bg.jpg" alt="Fachada da Óticas Idealize" loading="eager" fetchpriority="high">
+    </picture>
+    <div class="hero-overlay"></div>
 
     <div class="wrap">
-      <div class="hero-grid">
-        <div class="hero-content">
-          <h1>
-            <span class="line">Sua visão</span>
-            <span class="line">merece <span class="italic">o ideal.</span></span>
-          </h1>
+      <div class="hero-content">
+        <h1>
+          <span class="line">Sua visão</span>
+          <span class="line">merece <span class="italic">o ideal.</span></span>
+        </h1>
 
-          <p class="hero-sub">
-            Óculos completo a partir de <strong>R$ 99,90</strong> — montado em
-            <strong>60 minutos</strong> no laboratório próprio, com <strong>1 ano de garantia</strong> integral.
-            Estacionamento, cappuccino e cadeira de massagem por nossa conta.
-            Quatro unidades em São Paulo.
-          </p>
+        <p class="hero-sub">
+          Óculos completo a partir de <strong>R$ 99,90</strong> — montado em
+          <strong>60 minutos</strong> no laboratório próprio, com <strong>1 ano de garantia</strong> integral.
+          Estacionamento, cappuccino e cadeira de massagem por nossa conta.
+        </p>
 
-          <div class="hero-ctas">
-            <a href="https://wa.me/5519995803876?text=Ol%C3%A1!%20Vim%20pelo%20site%20da%20Idealize"
-               class="btn btn-primary btn-hero" target="_blank" rel="noopener">
-              Falar agora no WhatsApp
-              <span class="btn-arrow">→</span>
-            </a>
-          </div>
+        <div class="hero-ctas">
+          <a href="https://wa.me/5519995803876?text=Ol%C3%A1!%20Vim%20pelo%20site%20da%20Idealize"
+             class="btn btn-primary btn-hero" target="_blank" rel="noopener">
+            Falar agora no WhatsApp
+            <span class="btn-arrow">→</span>
+          </a>
         </div>
+      </div>
 
-        <div class="hero-visual">
-          <div class="hero-photo">
-            <img src="fachada-hero.jpg" alt="Fachada da Óticas Idealize com totem 'Armação 49,90 · Óculos pronto 1 hora'" loading="eager">
-          </div>
-          <div class="hero-badge-float">
-            <span class="badge-num">1h</span>
-            <span class="badge-label">Pronto em<br>1 hora</span>
-          </div>
-        </div>
+      <div class="hero-badge-float">
+        <span class="badge-num">1h</span>
+        <span class="badge-label">Pronto em<br>1 hora</span>
       </div>
     </div>
   </section>
@@ -1927,7 +2092,7 @@
   </a>
 
   <!-- ============================================================
-       SCRIPTS — Apenas smooth scroll para âncoras internas
+       SCRIPTS — Smooth scroll + Menu mobile
        ============================================================ -->
   <script>
     /* Smooth scroll para âncoras */
@@ -1938,11 +2103,50 @@
         const target = document.querySelector(href);
         if (target) {
           e.preventDefault();
-          target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          // Fecha menu mobile se estiver aberto
+          document.body.classList.remove('menu-open');
+          // Pequeno delay pra fechar o menu antes do scroll
+          setTimeout(() => {
+            target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          }, 100);
         }
       });
     });
 
+    /* Toggle do menu hamburger */
+    const navToggle = document.querySelector('.nav-toggle');
+    const mobileMenu = document.getElementById('mobile-menu');
+
+    navToggle.addEventListener('click', () => {
+      const isOpen = document.body.classList.toggle('menu-open');
+      navToggle.setAttribute('aria-expanded', isOpen);
+      navToggle.setAttribute('aria-label', isOpen ? 'Fechar menu' : 'Abrir menu');
+      mobileMenu.setAttribute('aria-hidden', !isOpen);
+    });
+
+    /* Fecha menu com tecla ESC */
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && document.body.classList.contains('menu-open')) {
+        document.body.classList.remove('menu-open');
+        navToggle.setAttribute('aria-expanded', 'false');
+        navToggle.setAttribute('aria-label', 'Abrir menu');
+        mobileMenu.setAttribute('aria-hidden', 'true');
+      }
+    });
+
+    /* Fecha menu ao clicar fora (no backdrop) */
+    document.addEventListener('click', (e) => {
+      if (
+        document.body.classList.contains('menu-open') &&
+        !mobileMenu.contains(e.target) &&
+        !navToggle.contains(e.target)
+      ) {
+        document.body.classList.remove('menu-open');
+        navToggle.setAttribute('aria-expanded', 'false');
+        navToggle.setAttribute('aria-label', 'Abrir menu');
+        mobileMenu.setAttribute('aria-hidden', 'true');
+      }
+    });
   </script>
 </body>
 </html>
