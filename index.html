@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Óticas Idealize — Óculos completo a partir de R$ 99,90, pronto em 60 minutos, com 1 ano de garantia. Estacionamento, cappuccino e cadeira de massagem por nossa conta. Unidades em Campinas, São Vicente, Sorocaba e Piracicaba.">
+  <meta name="description" content="Óticas Idealize, óculos completo a partir de R$ 99,90, pronto em 60 minutos, com 1 ano de garantia. Estacionamento, cappuccino e cadeira de massagem por nossa conta. Unidades em Campinas, São Vicente, Sorocaba e Piracicaba.">
   <meta name="theme-color" content="#fcfcfc">
 
   <meta property="og:title" content="Óticas Idealize · Sua visão merece o ideal">
@@ -409,16 +409,23 @@
           rgba(252, 252, 252, 0.35) 100%
         );
     }
-    /* Em mobile o overlay precisa ser mais forte e uniforme */
+    /* Em mobile o overlay é quase opaco para garantir legibilidade */
     @media (max-width: 768px) {
       .hero-overlay {
         background:
           linear-gradient(
             180deg,
-            rgba(252, 252, 252, 0.92) 0%,
-            rgba(252, 252, 252, 0.78) 40%,
-            rgba(252, 252, 252, 0.55) 100%
+            rgba(252, 252, 252, 0.97) 0%,
+            rgba(252, 252, 252, 0.94) 45%,
+            rgba(252, 252, 252, 0.82) 80%,
+            rgba(252, 252, 252, 0.65) 100%
           );
+      }
+      /* Reforço extra de contraste com text-shadow sutil */
+      .hero h1,
+      .hero-sub,
+      .hero-cta-text {
+        text-shadow: 0 1px 2px rgba(252, 252, 252, 0.9);
       }
     }
 
@@ -452,9 +459,18 @@
       line-height: 1.6;
       color: var(--text);
       max-width: 560px;
-      margin-bottom: 40px;
+      margin-bottom: 20px;
     }
     .hero-sub strong { color: var(--ink); font-weight: 700; }
+
+    .hero-cta-text {
+      font-size: clamp(14px, 1.3vw, 16px);
+      line-height: 1.5;
+      color: var(--text-soft);
+      max-width: 560px;
+      margin-bottom: 32px;
+      font-weight: 500;
+    }
 
     .hero-ctas {
       display: flex;
@@ -1570,9 +1586,12 @@
         </h1>
 
         <p class="hero-sub">
-          Óculos completo a partir de <strong>R$ 99,90</strong> — montado em
-          <strong>60 minutos</strong> no laboratório próprio, com <strong>1 ano de garantia</strong> integral.
-          Estacionamento, cappuccino e cadeira de massagem por nossa conta.
+          Óculos completo a partir de <strong>R$ 99,90</strong>,
+          pronto em até <strong>60 minutos</strong>* e com <strong>1 ano de garantia</strong>.
+        </p>
+
+        <p class="hero-cta-text">
+          Clique no botão abaixo e fale com nosso time.
         </p>
 
         <div class="hero-ctas">
@@ -1638,7 +1657,7 @@
           </div>
           <div class="pillar-text">
             <h4>Preços diretos, garantia integral</h4>
-            <p>Armações por <strong>R$ 49,90</strong> com 1 ano de garantia. Óculos completo (armação + lentes) a partir de <strong>R$ 99,90</strong> — tudo incluso, sem letra miúda.</p>
+            <p>Armações por R$ 49,90 com 1 ano de garantia. Óculos completo (armação + lentes) a partir de R$ 99,90, tudo incluso, sem letra miúda.</p>
           </div>
         </li>
 
@@ -1658,14 +1677,14 @@
         <div class="numbers-text reveal">
           <span class="util util-light">— A confiança em números</span>
           <h2>Quatro anos · quatro lojas<br><span class="italic">cinco estrelas.</span></h2>
-          <p>Em quatro anos construímos uma reputação que se mede em avaliações reais — não em propaganda. Todas as quatro unidades têm nota máxima no Google.</p>
+          <p>Em quatro anos construímos uma reputação que se mede em avaliações reais, não em propaganda. Todas as quatro unidades têm nota máxima no Google.</p>
         </div>
 
         <div class="numbers-grid">
           <div class="number-card reveal">
             <div class="label">Tradição</div>
             <div class="value">4</div>
-            <div class="desc">anos no mercado óptico</div>
+            <div class="desc">anos no mercado ótico</div>
           </div>
           <div class="number-card reveal">
             <div class="label">Franquias</div>
@@ -1726,7 +1745,7 @@
             </svg>
           </div>
           <h3>Cappuccino<br>na chegada.<br><span class="italic">Cortesia da casa.</span></h3>
-          <p>Detalhe pequeno que muda completamente o jeito como você se sente entrando na loja. Café quentinho, água gelada, ambiente acolhedor. Fique à vontade — você está em casa.</p>
+          <p>Detalhe pequeno que muda completamente o jeito como você se sente entrando na loja. Café quentinho, água gelada, ambiente acolhedor. Fique à vontade, você está em casa.</p>
         </article>
 
         <!-- 03 Cadeira de massagem (laranja) -->
@@ -1763,7 +1782,7 @@
             </svg>
           </div>
           <h3>Atendimento<br><span class="italic">consultivo.</span></h3>
-          <p>Equipe treinada em visagismo para entender seu rosto, estilo e necessidade. Orienta sem pressionar — você decide no seu tempo, com toda informação na mão. Aqui ninguém vende empurrado.</p>
+          <p>Equipe treinada em visagismo para entender seu rosto, estilo e necessidade. Orienta sem pressionar, você decide no seu tempo, com toda informação na mão. Aqui ninguém vende empurrado.</p>
         </article>
 
       </div>
@@ -1787,7 +1806,7 @@
         <p class="value-intro" style="margin-top: 24px;">
           Cada unidade conta com <strong>estacionamento gratuito ao lado da loja</strong> e ambiente preparado pra você decidir com calma.
           Nossa coleção exclusiva traz <strong>armações da própria marca por apenas R$ 49,90</strong>,
-          com <strong>1 ano de garantia integral</strong> — qualidade real e preço justo na mesma compra.
+          com <strong>1 ano de garantia integral</strong>, qualidade real e preço justo na mesma compra.
         </p>
         <p class="value-intro" style="margin-top: 24px;">
           Contamos com uma vasta grade de lentes prontas para entrega em apenas <strong>1 hora</strong> (mediante disponibilidade).
