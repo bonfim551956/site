@@ -395,18 +395,18 @@
       display: block;
     }
 
-    /* Overlay degradê para legibilidade do texto */
+    /* Overlay para legibilidade - balanceado para conteúdo centralizado */
     .hero-overlay {
       position: absolute;
       inset: 0;
       z-index: -1;
       background:
-        linear-gradient(
-          105deg,
-          rgba(252, 252, 252, 0.95) 0%,
-          rgba(252, 252, 252, 0.88) 32%,
-          rgba(252, 252, 252, 0.55) 60%,
-          rgba(252, 252, 252, 0.35) 100%
+        radial-gradient(
+          ellipse at center,
+          rgba(252, 252, 252, 0.92) 0%,
+          rgba(252, 252, 252, 0.78) 40%,
+          rgba(252, 252, 252, 0.5) 80%,
+          rgba(252, 252, 252, 0.3) 100%
         );
     }
     /* Em mobile o overlay é quase opaco para garantir legibilidade */
@@ -435,7 +435,9 @@
     }
 
     .hero-content {
-      max-width: 640px;
+      max-width: 760px;
+      margin: 0 auto;
+      text-align: center;
       position: relative;
     }
 
@@ -458,8 +460,8 @@
       font-size: clamp(15px, 1.5vw, 18px);
       line-height: 1.6;
       color: var(--text);
-      max-width: 560px;
-      margin-bottom: 20px;
+      max-width: 580px;
+      margin: 0 auto 20px;
     }
     .hero-sub strong { color: var(--ink); font-weight: 700; }
 
@@ -468,7 +470,7 @@
       line-height: 1.5;
       color: var(--text-soft);
       max-width: 560px;
-      margin-bottom: 32px;
+      margin: 0 auto 32px;
       font-weight: 500;
     }
 
@@ -476,6 +478,7 @@
       display: flex;
       gap: 16px;
       flex-wrap: wrap;
+      justify-content: center;
     }
 
     /* Badge flutuante "1h pronto" — flutua no canto direito sobre a foto */
@@ -622,11 +625,13 @@
     }
     .pillar-card {
       background: var(--peach);
-      padding: 36px 32px;
+      padding: 48px 32px;
       border-radius: 32px;
       display: flex;
       flex-direction: column;
-      gap: 20px;
+      align-items: center;
+      text-align: center;
+      gap: 24px;
       transition: transform 0.5s var(--ease), box-shadow 0.5s var(--ease);
     }
     .pillar-card:hover {
@@ -634,8 +639,8 @@
       box-shadow: 0 24px 50px rgba(237, 112, 10, 0.18);
     }
     .pillar-icon {
-      width: 56px;
-      height: 56px;
+      width: 60px;
+      height: 60px;
       border-radius: 18px;
       background: var(--coral);
       color: var(--white);
@@ -650,16 +655,18 @@
     .pillar-text h4 {
       font-family: 'Instrument Serif', serif;
       font-weight: 400;
-      font-size: 26px;
+      font-size: 28px;
       line-height: 1.05;
       letter-spacing: -0.02em;
       color: var(--ink);
-      margin-bottom: 10px;
+      margin-bottom: 12px;
     }
     .pillar-text p {
       font-size: 14px;
       color: var(--ink-text-soft);
-      line-height: 1.55;
+      line-height: 1.6;
+      max-width: 320px;
+      margin: 0 auto;
     }
     .pillar-text p strong {
       color: var(--coral);
@@ -1295,10 +1302,18 @@
     }
     .final p {
       font-size: clamp(16px, 1.6vw, 19px);
-      line-height: 1.5;
+      line-height: 1.55;
       color: rgba(255, 255, 255, 0.92);
-      max-width: 600px;
-      margin: 0 auto 48px;
+      max-width: 640px;
+      margin: 0 auto 20px;
+    }
+    .final-call {
+      font-family: 'Instrument Serif', serif !important;
+      font-style: italic !important;
+      font-size: clamp(20px, 2.2vw, 28px) !important;
+      font-weight: 400 !important;
+      color: var(--white) !important;
+      margin-bottom: 40px !important;
     }
     .btn-final {
       background: var(--white);
@@ -1643,7 +1658,7 @@
           </div>
           <div class="pillar-text">
             <h4>Estacionamento gratuito</h4>
-            <p>Todas as nossas unidades contam com ESTACIONAMENTO GRATUITO, conveniência desde o primeiro minuto da visita.</p>
+            <p>Vaga grátis ao lado de cada uma das nossas unidades. Conveniência desde o primeiro minuto da visita.</p>
           </div>
         </li>
 
@@ -1971,11 +1986,11 @@
           <div class="unit-info">
             <div class="unit-row">
               <span class="unit-row-label">Endereço</span>
-              <span class="unit-row-value">Piracicaba · SP<br><em style="color:var(--text-faint);font-style:italic;">[a confirmar]</em></span>
+              <span class="unit-row-value">Rua Benjamin Constant, 1379<br>Piracicaba · SP</span>
             </div>
             <div class="unit-row">
               <span class="unit-row-label">WhatsApp</span>
-              <span class="unit-row-value">Em breve</span>
+              <span class="unit-row-value">(19) 99970-1030</span>
             </div>
             <div class="unit-row">
               <span class="unit-row-label">Horário</span>
@@ -1983,9 +1998,9 @@
             </div>
           </div>
           <div class="unit-actions">
-            <a href="https://wa.me/5519995803876?text=Quero%20atendimento%20em%20Piracicaba"
+            <a href="https://wa.me/5519999701030?text=Ol%C3%A1!%20Vim%20pelo%20site%20da%20Idealize%20Piracicaba"
                class="unit-btn unit-btn-primary" target="_blank" rel="noopener">WhatsApp</a>
-            <a href="https://maps.google.com/?q=%C3%93ticas+Idealize+Piracicaba+SP"
+            <a href="https://www.google.com/maps/search/?api=1&query=Rua+Benjamin+Constant+1379+Piracicaba+SP"
                class="unit-btn unit-btn-ghost" target="_blank" rel="noopener">Mapa</a>
           </div>
         </article>
@@ -2004,9 +2019,12 @@
           <span class="util">— Última chamada</span>
           <h2>Hora de ver<br><span class="italic">melhor.</span></h2>
           <p>
-            Óculos completo a partir de R$ 99,90. Pronto em 60 minutos.
-            Estacionamento, cappuccino e cadeira de massagem por nossa conta.
-            Vem pra qualquer unidade — a gente te espera.
+            Óculos completo a partir de R$ 99,90, pronto em até 60 minutos
+            com estacionamento gratuito, um delicioso cappuccino
+            e cadeira de massagem por nossa conta.
+          </p>
+          <p class="final-call">
+            Vem para qualquer unidade, a gente te espera.
           </p>
           <a href="https://wa.me/5519995803876?text=Quero%20aproveitar%20a%20oferta%20da%20%C3%93ticas%20Idealize"
              class="btn-final" target="_blank" rel="noopener">
