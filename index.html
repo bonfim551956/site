@@ -481,6 +481,39 @@
       justify-content: center;
     }
 
+    /* Mobile: fontes maiores e mais impactantes no hero */
+    @media (max-width: 768px) {
+      .hero {
+        padding: 140px 0 80px;
+      }
+      .hero h1 {
+        font-size: clamp(56px, 14vw, 76px);
+        line-height: 0.95;
+        margin-bottom: 36px;
+      }
+      .hero-sub {
+        font-size: 19px;
+        line-height: 1.55;
+        margin-bottom: 24px;
+        max-width: 100%;
+        padding: 0 8px;
+      }
+      .hero-cta-text {
+        font-size: 16px;
+        line-height: 1.5;
+        margin-bottom: 36px;
+        padding: 0 8px;
+      }
+    }
+    /* Telas muito pequenas (iPhone SE etc): ajuste fino */
+    @media (max-width: 380px) {
+      .hero h1 {
+        font-size: 52px;
+      }
+      .hero-sub { font-size: 17px; }
+      .hero-cta-text { font-size: 15px; }
+    }
+
     /* Badge flutuante "1h pronto" — flutua no canto direito sobre a foto */
     .hero-badge-float {
       position: absolute;
