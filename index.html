@@ -6,11 +6,11 @@
   <meta name="description" content="Óticas Idealize, óculos completo a partir de R$ 99,90, pronto em 60 minutos, com 1 ano de garantia. Estacionamento, cappuccino e cadeira de massagem por nossa conta. Unidades em Campinas, São Vicente, Sorocaba e Piracicaba.">
   <meta name="theme-color" content="#fcfcfc">
 
-  <meta property="og:title" content="Óticas Idealize · SUA VISÃO MERECE O IDEAL">
+  <meta property="og:title" content="Óticas Idealize · Sua visão merece o ideal">
   <meta property="og:description" content="Óculos completo R$ 99,90. Pronto em 60 minutos. Estacionamento, cappuccino e cadeira de massagem cortesia.">
   <meta property="og:type" content="website">
 
-  <title>Óticas Idealize · SUA VISÃO MERECE O IDEAL</title>
+  <title>Óticas Idealize · Sua visão merece o ideal</title>
 
   <!-- Tipografia editorial: Instrument Serif (headlines) + Manrope (UI/body) -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -707,7 +707,7 @@
     }
 
     /* ============================================================
-       7. VALUE PROPOSITION — Quem somos (texto editorial)
+       7. VALUE PROPOSITION — Quem Somos (texto editorial)
        ============================================================ */
     .value-prop {
       padding: 120px 0;
@@ -1147,18 +1147,23 @@
       gap: 14px;
     }
     .testimonial-avatar {
-      width: 44px;
-      height: 44px;
+      width: 56px;
+      height: 56px;
       border-radius: 50%;
-      background: var(--coral);
-      color: var(--white);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-family: 'Instrument Serif', serif;
-      font-style: italic;
-      font-size: 20px;
-      transform: rotate(-3deg);
+      object-fit: cover;
+      flex-shrink: 0;
+      border: 2px solid var(--peach);
+      box-shadow:
+        0 4px 12px rgba(237, 112, 10, 0.15),
+        0 0 0 1px rgba(237, 112, 10, 0.08);
+      transition: transform 0.4s var(--ease), box-shadow 0.4s var(--ease);
+      display: block;
+    }
+    .testimonial:hover .testimonial-avatar {
+      transform: scale(1.05);
+      box-shadow:
+        0 6px 18px rgba(237, 112, 10, 0.25),
+        0 0 0 2px rgba(237, 112, 10, 0.15);
     }
     .testimonial-name {
       font-size: 14px;
@@ -1586,7 +1591,7 @@
         <li><a href="#quem-somos">Quem Somos</a></li>
         <li><a href="#experience">Experiência</a></li>
         <li><a href="#locations">Unidades</a></li>
-        <li><a href="https://wa.me/5519995803876?text=Ol%C3%A1!%20Vim%20pelo%20site%20da%20Idealize" target="_blank" rel="noopener">Fale conosco</a></li>
+        <li><a href="https://wa.me/5519995803876?text=Ol%C3%A1!%20Vim%20pelo%20site%20da%20Idealize" target="_blank" rel="noopener">Fale Conosco</a></li>
       </ul>
 
       <!-- Botão hamburger (mobile) -->
@@ -1629,7 +1634,7 @@
     <div class="wrap">
       <div class="hero-content">
         <h1>
-          <span class="line">Sua visão </span>
+          <span class="line">Sua visão</span>
           <span class="line">merece <span class="italic">o ideal.</span></span>
         </h1>
 
@@ -1652,8 +1657,8 @@
       </div>
 
       <div class="hero-badge-float">
-        <span class="badge-num">Óculos</span>
-        <span class="badge-label">Pronto em<br>60 minutos</span>
+        <span class="badge-num">1h</span>
+        <span class="badge-label">Pronto em<br>1 hora</span>
       </div>
     </div>
   </section>
@@ -1691,7 +1696,7 @@
           </div>
           <div class="pillar-text">
             <h4>Estacionamento gratuito</h4>
-            <p>Todas nossas unidades contam com estacionamento gratuito, conveniência desde o primeiro minuto da visita.</p>
+            <p>Vaga grátis ao lado de cada uma das nossas unidades. Conveniência desde o primeiro minuto da visita.</p>
           </div>
         </li>
 
@@ -1704,7 +1709,7 @@
             </svg>
           </div>
           <div class="pillar-text">
-            <h4>Preço único, garantia integral</h4>
+            <h4>Preços diretos, garantia integral</h4>
             <p>Armações por R$ 49,90 com 1 ano de garantia. Óculos completo (armação + lentes) a partir de R$ 99,90, tudo incluso, sem letra miúda.</p>
           </div>
         </li>
@@ -1857,7 +1862,7 @@
           com <strong>1 ano de garantia integral</strong>, qualidade real e preço justo na mesma compra.
         </p>
         <p class="value-intro" style="margin-top: 24px;">
-          Contamos com uma vasta grade de lentes prontas para entrega em apenas <strong>60 minutos</strong> (mediante disponibilidade).
+          Contamos com uma vasta grade de lentes prontas para entrega em apenas <strong>1 hora</strong> (mediante disponibilidade).
           Enquanto seu óculos é montado no laboratório, você relaxa numa cadeira massageadora e toma um cappuccino.
           Detalhes que fazem da visita à ótica um momento prazeroso.
         </p>
@@ -1885,7 +1890,7 @@
             estacionei na porta, atendimento impecável."
           </p>
           <div class="testimonial-author">
-            <div class="testimonial-avatar">M</div>
+            <img src="mariana-souza.jpg" alt="Mariana Souza, cliente Campinas" class="testimonial-avatar" loading="lazy" width="56" height="56">
             <div>
               <div class="testimonial-name">Mariana Souza</div>
               <div class="testimonial-loc">Campinas · 2025</div>
@@ -1900,7 +1905,7 @@
             Tava cético, virei fã. Preço imbatível pra qualidade."
           </p>
           <div class="testimonial-author">
-            <div class="testimonial-avatar">R</div>
+            <img src="roberto-lima.jpg" alt="Roberto Lima, cliente Sorocaba" class="testimonial-avatar" loading="lazy" width="56" height="56">
             <div>
               <div class="testimonial-name">Roberto Lima</div>
               <div class="testimonial-loc">Sorocaba · 2024</div>
@@ -1915,7 +1920,7 @@
             de 1 ano e atendimento humano. Voltarei sempre."
           </p>
           <div class="testimonial-author">
-            <div class="testimonial-avatar">C</div>
+            <img src="camila-ferreira.jpg" alt="Camila Ferreira, cliente Piracicaba" class="testimonial-avatar" loading="lazy" width="56" height="56">
             <div>
               <div class="testimonial-name">Camila Ferreira</div>
               <div class="testimonial-loc">Piracicaba · 2025</div>
@@ -1944,7 +1949,7 @@
           <div class="unit-info">
             <div class="unit-row">
               <span class="unit-row-label">Endereço</span>
-              <span class="unit-row-value">Rua Barão de Jaguara, 1164<br>Centro</span>
+              <span class="unit-row-value">Rua Barão de Jaguara, 1164<br>Centro · 13015-002</span>
             </div>
             <div class="unit-row">
               <span class="unit-row-label">WhatsApp</span>
@@ -1952,7 +1957,7 @@
             </div>
             <div class="unit-row">
               <span class="unit-row-label">Horário</span>
-              <span class="unit-row-value">Seg–Sex 8h–18h · Sáb 9h–15h</span>
+              <span class="unit-row-value">Seg–Sex 9h–19h · Sáb 9h–14h</span>
             </div>
           </div>
           <div class="unit-actions">
@@ -1977,7 +1982,7 @@
             </div>
             <div class="unit-row">
               <span class="unit-row-label">Horário</span>
-              <span class="unit-row-value">Seg–Sex 9h–19h · Sáb 9h–15h</span>
+              <span class="unit-row-value">Seg–Sex 9h–19h · Sáb 9h–14h</span>
             </div>
           </div>
           <div class="unit-actions">
@@ -1994,7 +1999,7 @@
           <div class="unit-info">
             <div class="unit-row">
               <span class="unit-row-label">Endereço</span>
-              <span class="unit-row-value">R. Comendador Hermelino<br>Matarazzo, 471, Vila Santana</span>
+              <span class="unit-row-value">R. Cmdr. Hermelino<br>Matarazzo, 471</span>
             </div>
             <div class="unit-row">
               <span class="unit-row-label">WhatsApp</span>
@@ -2002,7 +2007,7 @@
             </div>
             <div class="unit-row">
               <span class="unit-row-label">Horário</span>
-              <span class="unit-row-value">Seg–Sex 9h–19h · Sáb 9h–15h</span>
+              <span class="unit-row-value">Seg–Sex 9h–19h · Sáb 9h–14h</span>
             </div>
           </div>
           <div class="unit-actions">
@@ -2019,7 +2024,7 @@
           <div class="unit-info">
             <div class="unit-row">
               <span class="unit-row-label">Endereço</span>
-              <span class="unit-row-value">Rua Benjamin Constant, 1379<br>Centro</span>
+              <span class="unit-row-value">Rua Benjamin Constant, 1379<br>Piracicaba · SP</span>
             </div>
             <div class="unit-row">
               <span class="unit-row-label">WhatsApp</span>
@@ -2027,7 +2032,7 @@
             </div>
             <div class="unit-row">
               <span class="unit-row-label">Horário</span>
-              <span class="unit-row-value">Seg–Sex 9h–19h · Sáb 9h–15h</span>
+              <span class="unit-row-value">Seg–Sex 9h–19h · Sáb 9h–14h</span>
             </div>
           </div>
           <div class="unit-actions">
