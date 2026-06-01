@@ -1340,33 +1340,20 @@
     @media (min-width: 768px) {
       .footer-grid { grid-template-columns: 2fr 1fr 1fr 1fr; }
     }
-    /* Wordmark editorial branco para rodapé teal */
-    .footer-wordmark {
-      display: flex;
-      flex-direction: column;
-      gap: 4px;
+    /* Logo branca no rodapé (PNG transparente) */
+    .footer-logo {
+      display: inline-block;
       margin-bottom: 28px;
-      align-items: flex-start;
       transition: opacity 0.3s var(--ease);
     }
-    .footer-wordmark:hover { opacity: 0.85; }
-    .footer-wordmark small {
-      font-family: 'Instrument Serif', serif;
-      font-style: italic;
-      font-weight: 400;
-      font-size: 18px;
-      color: rgba(255, 255, 255, 0.7);
-      letter-spacing: 0.01em;
-      line-height: 1;
+    .footer-logo:hover { opacity: 0.85; }
+    .footer-logo img {
+      height: 56px;
+      width: auto;
+      display: block;
     }
-    .footer-wordmark strong {
-      font-family: 'Manrope', sans-serif;
-      font-weight: 800;
-      font-size: 36px;
-      color: var(--white);
-      letter-spacing: -0.02em;
-      text-transform: uppercase;
-      line-height: 1;
+    @media (min-width: 768px) {
+      .footer-logo img { height: 64px; }
     }
     .footer-brand p {
       font-size: 15px;
@@ -1983,9 +1970,8 @@
     <div class="wrap">
       <div class="footer-grid">
         <div class="footer-brand">
-          <a href="#" class="footer-wordmark" aria-label="Óticas Idealize">
-            <small>Óticas</small>
-            <strong>Idealize</strong>
+          <a href="#" class="footer-logo" aria-label="Óticas Idealize">
+            <img src="logo-dark.png" alt="Óticas Idealize">
           </a>
           <p>
             Tecnologia de laboratório, preço de bairro. Quatro lojas em São Paulo
@@ -2005,16 +1991,6 @@
         </div>
 
         <div>
-          <h4>Navegação</h4>
-          <ul>
-            <li><a href="#quem-somos">Quem Somos</a></li>
-            <li><a href="#experience">Experiência</a></li>
-            <li><a href="#locations">Unidades</a></li>
-            <li><a href="https://wa.me/5519995803876" target="_blank" rel="noopener">WhatsApp</a></li>
-          </ul>
-        </div>
-
-        <div>
           <h4>Idealize</h4>
           <ul>
             <li><a href="#quem-somos">Quem Somos</a></li>
@@ -2031,6 +2007,14 @@
             <li>São Vicente · SP</li>
             <li>Sorocaba · SP</li>
             <li>Piracicaba · SP</li>
+          </ul>
+        </div>
+
+        <div>
+          <h4>Franquias</h4>
+          <ul>
+            <li>Peruíbe · SP</li>
+            <li>Americana · SP</li>
           </ul>
         </div>
       </div>
